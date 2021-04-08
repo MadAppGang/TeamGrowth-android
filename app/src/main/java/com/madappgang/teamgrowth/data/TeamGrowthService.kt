@@ -1,6 +1,7 @@
 package com.madappgang.teamgrowth.data
 
 import com.madappgang.teamgrowth.domain.Goal
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 
@@ -10,6 +11,6 @@ import retrofit2.http.POST
  */
 
 interface TeamGrowthService {
-    @POST("/api/goals")
+    @GET("/api/goals")
     suspend fun getGoals(): List<Goal>
 }

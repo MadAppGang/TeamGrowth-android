@@ -27,7 +27,12 @@ class GoalsViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            _goals.emit(teamGrowthRepository.getGoals())
+            // TODO: Improve error handling
+            try {
+                _goals.emit(teamGrowthRepository.getGoals())
+            } catch (e : Exception) {
+
+            }
         }
     }
 }

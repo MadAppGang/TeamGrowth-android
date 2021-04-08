@@ -14,6 +14,7 @@ import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
@@ -29,12 +30,20 @@ object DataModule {
 
     @Singleton
     @Provides
-    fun provideTeamGrowthService(): TeamGrowthService {
-        return OkHttpClient.Builder()
-            .addInterceptor(IdentifoAuthentication.getIdentifoInterceptor())
-            .build()
-            .createRetrofitInstance(BuildConfig.API_URL)
+    fun provideLoggingInterceptor() = HttpLoggingInterceptor().apply {
+        level = HttpLoggingInterceptor.Level.BODY
     }
+
+    @Singleton
+    @Provides
+    fun provideTeamGrowthService(
+        httpLoggingInterceptor: HttpLoggingInterceptor
+    ) = OkHttpClient.Builder()
+        .addInterceptor(IdentifoAuthentication.getIdentifoInterceptor())
+        .addInterceptor(httpLoggingInterceptor)
+        .build()
+        .createRetrofitInstance<TeamGrowthService>(BuildConfig.API_URL)
+
 
     @Singleton
     @Provides

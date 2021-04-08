@@ -7,7 +7,9 @@ import com.madappgang.IdentifoAuthentication
 import com.madappgang.identifolib.entities.AuthState
 import com.madappgang.identifolibui.login.IdentifoSignInActivity
 import com.madappgang.identifolibui.registration.IdentifoSingUpActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

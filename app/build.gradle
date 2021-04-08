@@ -1,6 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlinx-serialization'
 }
 
 ext.versionMajor = 0
@@ -29,6 +32,7 @@ android {
         buildConfigField "String", "APPLICATION_ID", localProperties['applicationId']
         buildConfigField "String", "SHARED_SECRET", localProperties['sharedSecret']
         buildConfigField "String", "IDENTIFO_URL", localProperties['identifoUrl']
+        buildConfigField "String", "API_URL", localProperties['apiUrl']
     }
 
     buildTypes {
@@ -44,15 +48,30 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
-    def identifoVersion = "0.0.2.3"
+    def identifoVersion = "0.0.2.4"
     implementation "com.github.MadAppGang.identifo-android:core:${identifoVersion}"
     implementation "com.github.MadAppGang.identifo-android:ui:${identifoVersion}"
+
+    def retrofitVersion = "2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:${retrofitVersion}"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.1.0"
+
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+
+    implementation 'com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.4.4'
+    implementation "androidx.constraintlayout:constraintlayout:2.0.4"
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

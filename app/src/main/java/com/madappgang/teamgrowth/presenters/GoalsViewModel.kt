@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.madappgang.teamgrowth.data.TeamGrowthRepository
 import com.madappgang.teamgrowth.domain.Goal
+import com.madappgang.teamgrowth.domain.UserGoal
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -22,17 +23,12 @@ class GoalsViewModel @Inject constructor(
     private val teamGrowthRepository: TeamGrowthRepository
 ) : ViewModel() {
 
-    private val _goals = MutableStateFlow<List<Goal>>(listOf())
-    val goals: StateFlow<List<Goal>> = _goals.asStateFlow()
+    private val _goals = MutableStateFlow<List<UserGoal>>(listOf())
+    val goals: StateFlow<List<UserGoal>> = _goals.asStateFlow()
 
     init {
         viewModelScope.launch {
-            // TODO: Improve error handling
-            try {
-                _goals.emit(teamGrowthRepository.getGoals())
-            } catch (e : Exception) {
-
-            }
+            _goals.emit(teamGrowthRepository.getUserGoals())
         }
     }
 }

@@ -3,4 +3,7 @@
 
     <!-- goals screen -->
     <string name="myProgress">My progress</string>
+    <string name="category">Category: %s</string>
+    <string name="progressThisWeek">+%d\%% this week</string>
+    <string name="progressInTotal">+%d\%% in </string>
 </resources>

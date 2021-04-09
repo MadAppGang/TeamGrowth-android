@@ -19,9 +19,9 @@ data class Goal(
     @SerialName("link") val link: String,
     @SerialName("month") val month: String,
     @SerialName("assignTo") val assignTo: List<String>,
-    @SerialName("progress") val progress: Int,
-    @SerialName("weeklyProgress") val weeklyProgress: Int,
-    @SerialName("progressUpdatedAt") val progressUpdatedAt: Int,
+    @SerialName("progress") val progress: Float,
+    @SerialName("weeklyProgress") val weeklyProgress: Float,
+    @SerialName("progressUpdatedAt") val progressUpdatedAt: String,
     @SerialName("createdAt") val createdAt: String,
     @SerialName("updatedAt") val updatedAt: String
 )

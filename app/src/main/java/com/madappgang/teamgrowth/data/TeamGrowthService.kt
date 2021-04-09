@@ -1,8 +1,7 @@
 package com.madappgang.teamgrowth.data
 
-import com.madappgang.teamgrowth.domain.Goal
+import com.madappgang.teamgrowth.domain.UserGoal
 import retrofit2.http.GET
-import retrofit2.http.POST
 
 
 /*
@@ -12,5 +11,5 @@ import retrofit2.http.POST
 
 interface TeamGrowthService {
     @GET("/api/users/me/goals")
-    suspend fun getGoals(): List<Goal>
+    suspend fun getUserGoals(): List<UserGoal>
 }

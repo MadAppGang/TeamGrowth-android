@@ -33,7 +33,7 @@
         <item name="android:textColor">@color/gray</item>
     </style>
 
-    <style name="TertiaryTextViewStyle">
+    <style name="TertiaryTextViewStyle" parent="RalewayRegular">
         <item name="android:textColor">@color/yellow</item>
     </style>
 

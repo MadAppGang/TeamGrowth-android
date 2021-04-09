@@ -7,9 +7,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.madappgang.BaseClickListener
 import com.madappgang.teamgrowth.R
 import com.madappgang.teamgrowth.databinding.FragmentGoalsBinding
+import com.madappgang.teamgrowth.extensions.addSystemBottomPadding
 import com.madappgang.teamgrowth.extensions.addSystemTopBottomPadding
+import com.madappgang.teamgrowth.extensions.addSystemTopPadding
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -26,10 +29,14 @@ class GoalsFragment : Fragment(R.layout.fragment_goals) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        goalsViewBinding.constraintLayoutRootGoals.addSystemTopBottomPadding()
+        goalsViewBinding.constraintLayoutRootGoals.addSystemTopPadding()
+        goalsViewBinding.recycleViewGoals.addSystemBottomPadding()
 
-        goalsViewModel.goals.asLiveData().observe(viewLifecycleOwner) {
-            Log.i("GoalsFragment", "${it}")
+        val adapter = GoalsAdapter(BaseClickListener { userGoal -> })
+        goalsViewBinding.recycleViewGoals.adapter = adapter
+
+        goalsViewModel.goals.asLiveData().observe(viewLifecycleOwner) { goals ->
+            adapter.submitList(goals + goals + goals + goals + goals + goals + goals + goals + goals + goals + goals + goals)
         }
     }
 }

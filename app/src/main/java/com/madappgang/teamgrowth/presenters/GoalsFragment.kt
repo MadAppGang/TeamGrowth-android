@@ -9,6 +9,7 @@ import androidx.lifecycle.asLiveData
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.madappgang.teamgrowth.R
 import com.madappgang.teamgrowth.databinding.FragmentGoalsBinding
+import com.madappgang.teamgrowth.extensions.addSystemTopBottomPadding
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -25,8 +26,10 @@ class GoalsFragment : Fragment(R.layout.fragment_goals) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        goalsViewBinding.constraintLayoutRootGoals.addSystemTopBottomPadding()
+
         goalsViewModel.goals.asLiveData().observe(viewLifecycleOwner) {
-            Log.i("GoalsFragment", "$it")
+            Log.i("GoalsFragment", "${it}")
         }
     }
 }

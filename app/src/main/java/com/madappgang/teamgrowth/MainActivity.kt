@@ -1,12 +1,11 @@
 package com.madappgang.teamgrowth
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import androidx.lifecycle.asLiveData
 import com.madappgang.IdentifoAuthentication
 import com.madappgang.identifolib.entities.AuthState
-import com.madappgang.identifolibui.login.IdentifoSignInActivity
-import com.madappgang.identifolibui.registration.IdentifoSingUpActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -15,7 +14,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        IdentifoSingUpActivity.openActivity(this)
+        window?.run {
+            WindowCompat.setDecorFitsSystemWindows(this, false)
+        }
 
         IdentifoAuthentication.authenticationState.asLiveData().observe(this) { state ->
             when (state) {

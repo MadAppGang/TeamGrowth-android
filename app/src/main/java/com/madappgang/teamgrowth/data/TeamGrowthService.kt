@@ -11,6 +11,6 @@ import retrofit2.http.POST
  */
 
 interface TeamGrowthService {
-    @GET("/api/goals")
+    @GET("/api/users/me/goals")
     suspend fun getGoals(): List<Goal>
 }

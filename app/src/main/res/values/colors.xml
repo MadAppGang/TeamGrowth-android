@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="systemStatusBarColor">#40000000</color>
+    <color name="systemNavigationBarColor">#40000000</color>
+
+    <color name="yellow">#FABB18</color>
+    <color name="dark">#090707</color>
+    <color name="gray">#908E8E</color>
 </resources>

@@ -9,4 +9,9 @@
     <string name="completed">Completed</string>
     <string name="progressAccordingToPlan">Go according to plan</string>
     <string name="progressPercent">%d\%%</string>
+
+    <!-- update progress screen -->
+    <string name="updateProgressOnGoal">Update progress on goal</string>
+    <string name="saveProgress">Save progress</string>
+    <string name="cancel">Cancel</string>
 </resources>

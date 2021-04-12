@@ -7,7 +7,16 @@
 
     <fragment
         android:id="@+id/goalsFragment"
-        android:name="com.madappgang.teamgrowth.presenters.GoalsFragment"
+        android:name="com.madappgang.teamgrowth.presenters.goals.GoalsFragment"
         android:label="GoalsFragment"
-        tools:layout="@layout/fragment_goals"/>
+        tools:layout="@layout/fragment_goals">
+        <action
+            android:id="@+id/action_goalsFragment_to_updateProgressFragment"
+            app:destination="@id/updateProgressFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/updateProgressFragment"
+        android:name="com.madappgang.teamgrowth.presenters.updateProgress.UpdateProgressFragment"
+        android:label="UpdateProgressFragment"
+        tools:layout="@layout/fragment_update_progress"/>
 </navigation>

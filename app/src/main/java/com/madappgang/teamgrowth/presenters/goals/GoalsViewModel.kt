@@ -1,4 +1,4 @@
-package com.madappgang.teamgrowth.presenters
+package com.madappgang.teamgrowth.presenters.goals
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

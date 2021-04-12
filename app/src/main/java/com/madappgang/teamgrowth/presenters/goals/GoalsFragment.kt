@@ -1,17 +1,17 @@
-package com.madappgang.teamgrowth.presenters
+package com.madappgang.teamgrowth.presenters.goals
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.madappgang.BaseClickListener
 import com.madappgang.teamgrowth.R
 import com.madappgang.teamgrowth.databinding.FragmentGoalsBinding
-import com.madappgang.teamgrowth.utils.extensions.addSystemBottomPadding
-import com.madappgang.teamgrowth.utils.extensions.addSystemTopPadding
-import com.madappgang.teamgrowth.utils.extensions.animateTo
+import com.madappgang.teamgrowth.presenters.GoalsAdapter
+import com.madappgang.teamgrowth.utils.extensions.*
 import com.madappgang.teamgrowth.utils.extensions.showMessage
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.math.roundToInt
@@ -33,7 +33,9 @@ class GoalsFragment : Fragment(R.layout.fragment_goals) {
         goalsViewBinding.constraintLayoutRootGoals.addSystemTopPadding()
         goalsViewBinding.recycleViewGoals.addSystemBottomPadding()
 
-        val adapter = GoalsAdapter(BaseClickListener { userGoal -> })
+        val adapter = GoalsAdapter(BaseClickListener { userGoal ->
+            safeNavigate(R.id.action_goalsFragment_to_updateProgressFragment)
+        })
         goalsViewBinding.recycleViewGoals.adapter = adapter
 
         goalsViewModel.goals.asLiveData().observe(viewLifecycleOwner) { goals ->

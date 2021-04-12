@@ -47,7 +47,7 @@
         android:layout_marginTop="8dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="35%"
+        android:text=""
         android:textSize="@dimen/size36"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/textViewAccordingToPlan"

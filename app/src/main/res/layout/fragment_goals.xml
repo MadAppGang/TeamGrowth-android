@@ -60,6 +60,7 @@
             android:orientation="vertical">
 
             <include
+                android:id="@+id/includeProgress"
                 layout="@layout/include_total_progress"/>
 
             <androidx.recyclerview.widget.RecyclerView

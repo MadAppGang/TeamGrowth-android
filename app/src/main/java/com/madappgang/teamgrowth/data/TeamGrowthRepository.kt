@@ -1,5 +1,6 @@
 package com.madappgang.teamgrowth.data
 
+import com.madappgang.teamgrowth.domain.User
 import com.madappgang.teamgrowth.domain.UserGoal
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
@@ -13,6 +14,7 @@ import javax.inject.Inject
 
 interface TeamGrowthRepository {
     suspend fun getUserGoals(): List<UserGoal>
+    suspend fun getCurrentUser(): User
 }
 
 class TeamGrowthRepositoryImpl @Inject constructor(
@@ -21,5 +23,9 @@ class TeamGrowthRepositoryImpl @Inject constructor(
 ) : TeamGrowthRepository {
     override suspend fun getUserGoals(): List<UserGoal> = withContext(coroutineDispatcher) {
         teamGrowthService.getUserGoals()
+    }
+
+    override suspend fun getCurrentUser(): User = withContext(coroutineDispatcher) {
+        teamGrowthService.getCurrentUser()
     }
 }

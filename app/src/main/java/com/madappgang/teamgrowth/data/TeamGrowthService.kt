@@ -1,7 +1,9 @@
 package com.madappgang.teamgrowth.data
 
+import com.madappgang.teamgrowth.domain.User
 import com.madappgang.teamgrowth.domain.UserGoal
 import retrofit2.http.GET
+import retrofit2.http.Headers
 
 
 /*
@@ -12,4 +14,7 @@ import retrofit2.http.GET
 interface TeamGrowthService {
     @GET("/api/users/me/goals")
     suspend fun getUserGoals(): List<UserGoal>
+
+    @GET("/api/users/me")
+    suspend fun getCurrentUser() : User
 }

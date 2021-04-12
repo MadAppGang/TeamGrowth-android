@@ -11,8 +11,10 @@ import com.madappgang.teamgrowth.R
 import com.madappgang.teamgrowth.databinding.FragmentGoalsBinding
 import com.madappgang.teamgrowth.utils.extensions.addSystemBottomPadding
 import com.madappgang.teamgrowth.utils.extensions.addSystemTopPadding
+import com.madappgang.teamgrowth.utils.extensions.animateTo
 import com.madappgang.teamgrowth.utils.extensions.showMessage
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.math.roundToInt
 
 
 /*
@@ -44,6 +46,13 @@ class GoalsFragment : Fragment(R.layout.fragment_goals) {
 
         goalsViewBinding.imageViewLogout.setOnClickListener {
             goalsViewModel.performLogout()
+        }
+
+        goalsViewModel.currentUser.asLiveData().observe(viewLifecycleOwner) { user ->
+            user?.let {
+                goalsViewBinding.includeProgress.tpProgress.animateTo(user.overallProgress)
+                goalsViewBinding.includeProgress.textViewProgress.text = String.format(getString(R.string.progressPercent), user.overallProgress.roundToInt())
+            }
         }
     }
 }

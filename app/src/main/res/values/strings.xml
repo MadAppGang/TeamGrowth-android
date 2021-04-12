@@ -8,4 +8,5 @@
     <string name="progressInTotal">+%d\%% in total</string>
     <string name="completed">Completed</string>
     <string name="progressAccordingToPlan">Go according to plan</string>
+    <string name="progressPercent">%d\%%</string>
 </resources>

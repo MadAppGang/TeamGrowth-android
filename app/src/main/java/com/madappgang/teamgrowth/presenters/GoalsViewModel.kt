@@ -6,6 +6,7 @@ import com.madappgang.IdentifoAuthentication
 import com.madappgang.identifolib.extensions.onError
 import com.madappgang.identifolib.extensions.onSuccess
 import com.madappgang.teamgrowth.data.TeamGrowthRepository
+import com.madappgang.teamgrowth.domain.User
 import com.madappgang.teamgrowth.domain.UserGoal
 import com.madappgang.teamgrowth.utils.extensions.suspendApiCall
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -27,27 +28,47 @@ class GoalsViewModel @Inject constructor(
     private val _goals = MutableStateFlow<List<UserGoal>>(listOf())
     val goals: StateFlow<List<UserGoal>> = _goals.asStateFlow()
 
+    private val _currentUser = MutableStateFlow<User?>(null)
+    val currentUser: StateFlow<User?> = _currentUser.asStateFlow()
+
     private val _error = MutableSharedFlow<String>()
     val error: SharedFlow<String> = _error.asSharedFlow()
 
     init {
         viewModelScope.launch {
-            suspendApiCall {
-                teamGrowthRepository.getUserGoals()
-            }.onSuccess { userGoals ->
-                _goals.emit(userGoals)
-            }.onError { error ->
-                _error.emit(error.message ?: "")
-            }
+            getUser()
+            getGoals()
         }
+    }
+
+    private suspend fun getGoals() {
+        suspendApiCall {
+            teamGrowthRepository.getUserGoals()
+        }.onSuccess { userGoals ->
+            _goals.emit(userGoals)
+        }.onError { error ->
+            _error.emit(error.message ?: "")
+        }
+
+    }
+
+    private suspend fun getUser() {
+        suspendApiCall {
+            teamGrowthRepository.getCurrentUser()
+        }.onSuccess { user ->
+            _currentUser.emit(user)
+        }.onError { error ->
+            _error.emit(error.message ?: "")
+        }
+
     }
 
     fun performLogout() {
         viewModelScope.launch {
             IdentifoAuthentication.logout()
-            .onError { error ->
-                _error.emit(error.message ?: "")
-            }
+                .onError { error ->
+                    _error.emit(error.message ?: "")
+                }
         }
     }
 }

@@ -1,7 +1,6 @@
 package com.madappgang.teamgrowth.presenters
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -10,10 +9,9 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.madappgang.BaseClickListener
 import com.madappgang.teamgrowth.R
 import com.madappgang.teamgrowth.databinding.FragmentGoalsBinding
-import com.madappgang.teamgrowth.extensions.addSystemBottomPadding
-import com.madappgang.teamgrowth.extensions.addSystemTopBottomPadding
-import com.madappgang.teamgrowth.extensions.addSystemTopPadding
-import com.madappgang.teamgrowth.extensions.showMessage
+import com.madappgang.teamgrowth.utils.extensions.addSystemBottomPadding
+import com.madappgang.teamgrowth.utils.extensions.addSystemTopPadding
+import com.madappgang.teamgrowth.utils.extensions.showMessage
 import dagger.hilt.android.AndroidEntryPoint
 
 

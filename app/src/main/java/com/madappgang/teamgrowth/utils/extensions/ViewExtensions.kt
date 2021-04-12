@@ -1,4 +1,4 @@
-package com.madappgang.teamgrowth.extensions
+package com.madappgang.teamgrowth.utils.extensions
 
 import android.graphics.Rect
 import android.view.View

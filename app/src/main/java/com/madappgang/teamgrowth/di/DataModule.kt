@@ -2,11 +2,9 @@ package com.madappgang.teamgrowth.di
 
 import com.madappgang.IdentifoAuthentication
 import com.madappgang.teamgrowth.BuildConfig
-import com.madappgang.teamgrowth.extensions.createRetrofitInstance
-import com.madappgang.teamgrowth.data.TeamGrowthRepository
+import com.madappgang.teamgrowth.utils.extensions.createRetrofitInstance
 import com.madappgang.teamgrowth.data.TeamGrowthRepositoryImpl
 import com.madappgang.teamgrowth.data.TeamGrowthService
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,7 +13,6 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
 import javax.inject.Singleton
 
 

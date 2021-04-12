@@ -50,6 +50,7 @@ class GoalViewHolder(
             textViewLink.text = goal.link
             textViewProgressThisWeek.text = String.format(context.getString(R.string.progressThisWeek), goal.weeklyProgress.roundToInt())
             textViewProgressTotal.text = String.format(context.getString(R.string.progressInTotal), goal.progress.roundToInt())
+            weekProgressBar.setProgresses(goal.progress.toInt(), goal.weeklyProgress.toInt())
         }
     }
 }

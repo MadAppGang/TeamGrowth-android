@@ -1,4 +1,4 @@
-package com.madappgang.teamgrowth.extensions
+package com.madappgang.teamgrowth.utils.extensions
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json

@@ -78,13 +78,15 @@
                 app:layout_constraintTop_toTopOf="@+id/imageView"
                 tools:text="LinkLinkLinkLinkLinkLinkLinkLinkLinkLinkLinkLinkLinkLinkLink" />
 
-            <SeekBar
-                android:id="@+id/seekBar"
-                style="@style/Widget.AppCompat.SeekBar.Discrete"
+            <com.madappgang.teamgrowth.utils.customView.WeekProgressView
+                android:id="@+id/weekProgressBar"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:max="10"
-                android:progress="3"
+                android:layout_height="32dp"
+                android:padding="4dp"
+                app:weekStrokeWidth="4dp"
+                app:backgroundLineColor="@color/semitransparentLightGray"
+                app:totalProgressLineColor="@color/dark"
+                app:weekProgressLineColor="@color/yellow"
                 app:layout_constraintEnd_toEndOf="@+id/textViewGoalText"
                 app:layout_constraintStart_toStartOf="@+id/imageView"
                 app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -101,8 +103,8 @@
                 app:layout_constraintEnd_toStartOf="@+id/textViewProgressTotal"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintHorizontal_chainStyle="packed"
-                app:layout_constraintStart_toStartOf="@+id/seekBar"
-                app:layout_constraintTop_toBottomOf="@+id/seekBar"
+                app:layout_constraintStart_toStartOf="@+id/weekProgressBar"
+                app:layout_constraintTop_toBottomOf="@+id/weekProgressBar"
                 tools:text="+10% this week" />
 
             <TextView
@@ -115,10 +117,10 @@
                 android:maxLines="1"
                 android:textSize="@dimen/text14"
                 app:layout_constraintBottom_toBottomOf="@+id/textViewProgressThisWeek"
-                app:layout_constraintEnd_toEndOf="@+id/seekBar"
+                app:layout_constraintEnd_toEndOf="@+id/weekProgressBar"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/textViewProgressThisWeek"
-                app:layout_constraintTop_toBottomOf="@+id/seekBar"
+                app:layout_constraintTop_toBottomOf="@+id/weekProgressBar"
                 tools:text="+40% in total" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,9 +6,8 @@ import com.madappgang.IdentifoAuthentication
 import com.madappgang.identifolib.extensions.onError
 import com.madappgang.identifolib.extensions.onSuccess
 import com.madappgang.teamgrowth.data.TeamGrowthRepository
-import com.madappgang.teamgrowth.domain.Goal
 import com.madappgang.teamgrowth.domain.UserGoal
-import com.madappgang.teamgrowth.extensions.suspendApiCall
+import com.madappgang.teamgrowth.utils.extensions.suspendApiCall
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch

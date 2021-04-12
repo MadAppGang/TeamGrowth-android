@@ -1,11 +1,8 @@
-package com.madappgang.teamgrowth.extensions
+package com.madappgang.teamgrowth.utils.extensions
 
-import android.security.keystore.UserNotAuthenticatedException
 import com.madappgang.identifolib.entities.Error
 import com.madappgang.identifolib.entities.ErrorResponse
 import com.madappgang.identifolib.extensions.Result
-import retrofit2.HttpException
-import retrofit2.Response
 
 
 /*

@@ -7,4 +7,6 @@
     <dimen name="size20">20dp</dimen>
     <dimen name="size22">22dp</dimen>
     <dimen name="size24">24dp</dimen>
+    <dimen name="size36">36dp</dimen>
+
 </resources>

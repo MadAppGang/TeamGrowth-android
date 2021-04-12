@@ -18,6 +18,7 @@
 
     <TextView
         android:id="@+id/textViewMyProgress"
+        style="@style/PrimaryTextViewStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -26,7 +27,6 @@
         android:maxLines="1"
         android:text="@string/myProgress"
         android:textSize="@dimen/text18"
-        style="@style/PrimaryTextViewStyle"
         app:layout_constraintBottom_toBottomOf="@+id/imageViewLogout"
         app:layout_constraintEnd_toStartOf="@+id/imageViewLogout"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,18 +43,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleViewGoals"
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:fillViewport="true"
         android:overScrollMode="never"
-        android:clipToPadding="false"
-        tools:listitem="@layout/item_goal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewBackground" />
+        app:layout_constraintTop_toBottomOf="@+id/viewBackground">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/include_total_progress"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycleViewGoals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:overScrollMode="never"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_goal" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
     <View
         android:id="@+id/viewBackgroundGradient"

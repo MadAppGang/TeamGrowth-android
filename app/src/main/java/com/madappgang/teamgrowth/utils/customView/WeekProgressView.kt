@@ -50,7 +50,7 @@ class WeekProgressView @JvmOverloads constructor(
     }
 
     init {
-        context.theme.obtainStyledAttributes(attrs, R.styleable.OtpCodeView, 0, 0).apply {
+        context.theme.obtainStyledAttributes(attrs, R.styleable.WeekProgressView, 0, 0).apply {
             try {
                 totalLineColor = typedArray.getColor(R.styleable.WeekProgressView_totalProgressLineColor, 0)
                 weekLineColor = typedArray.getColor(R.styleable.WeekProgressView_weekProgressLineColor, 0)

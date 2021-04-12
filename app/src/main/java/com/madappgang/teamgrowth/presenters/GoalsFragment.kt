@@ -35,7 +35,7 @@ class GoalsFragment : Fragment(R.layout.fragment_goals) {
         goalsViewBinding.recycleViewGoals.adapter = adapter
 
         goalsViewModel.goals.asLiveData().observe(viewLifecycleOwner) { goals ->
-            adapter.submitList(goals + goals + goals + goals + goals + goals + goals + goals + goals + goals + goals + goals)
+            adapter.submitList(goals)
         }
 
         goalsViewModel.error.asLiveData().observe(viewLifecycleOwner) { errorMessage ->

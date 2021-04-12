@@ -6,4 +6,6 @@
     <string name="category">Category: %s</string>
     <string name="progressThisWeek">+%d\%% this week</string>
     <string name="progressInTotal">+%d\%% in total</string>
+    <string name="completed">Completed</string>
+    <string name="progressAccordingToPlan">Go according to plan</string>
 </resources>

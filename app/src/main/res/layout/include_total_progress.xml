@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.madappgang.teamgrowth.utils.customView.TotalProgressView
+        android:id="@+id/tpProgress"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:padding="12dp"
+        android:rotation="270"
+        app:progressCircleColor="@color/yellow"
+        app:circleProgressBlurStrokeWidth="4dp"
+        app:backgroundCircleColor="@color/semitransparentLightGray"
+        app:circleBackgroundStokeWidth="4dp"
+        app:circleProgressStrokeWidth="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewCompleted"
+        style="@style/PrimaryTextViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/completed"
+        android:textSize="@dimen/size14"
+        app:layout_constraintBottom_toTopOf="@+id/textViewProgress"
+        app:layout_constraintEnd_toEndOf="@+id/tpProgress"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/tpProgress"
+        app:layout_constraintTop_toTopOf="@+id/tpProgress"
+        app:layout_constraintVertical_bias="0.45"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/textViewProgress"
+        style="@style/PrimaryTextViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="35%"
+        android:textSize="@dimen/size36"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/textViewAccordingToPlan"
+        app:layout_constraintEnd_toEndOf="@+id/textViewCompleted"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/textViewCompleted"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCompleted" />
+
+    <TextView
+        android:id="@+id/textViewAccordingToPlan"
+        style="@style/TertiaryTextViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/progressAccordingToPlan"
+        android:textSize="@dimen/size14"
+        app:layout_constraintBottom_toBottomOf="@+id/tpProgress"
+        app:layout_constraintEnd_toEndOf="@+id/textViewProgress"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/textViewProgress"
+        app:layout_constraintTop_toBottomOf="@+id/textViewProgress" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,15 @@
     <declare-styleable name="WeekProgressView">
         <attr name="totalProgressLineColor" format="color" />
         <attr name="weekProgressLineColor" format="color" />
-        <attr name="backgroundLineColor" format="color"/>
+        <attr name="backgroundLineColor" format="color" />
         <attr name="weekStrokeWidth" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="TotalProgressView">
+        <attr name="backgroundCircleColor" format="color" />
+        <attr name="progressCircleColor" format="color" />
+        <attr name="circleBackgroundStokeWidth" format="dimension" />
+        <attr name="circleProgressStrokeWidth" format="dimension" />
+        <attr name="circleProgressBlurStrokeWidth" format="dimension" />
     </declare-styleable>
 </resources>

@@ -13,6 +13,7 @@ import com.madappgang.teamgrowth.databinding.FragmentGoalsBinding
 import com.madappgang.teamgrowth.extensions.addSystemBottomPadding
 import com.madappgang.teamgrowth.extensions.addSystemTopBottomPadding
 import com.madappgang.teamgrowth.extensions.addSystemTopPadding
+import com.madappgang.teamgrowth.extensions.showMessage
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -37,6 +38,14 @@ class GoalsFragment : Fragment(R.layout.fragment_goals) {
 
         goalsViewModel.goals.asLiveData().observe(viewLifecycleOwner) { goals ->
             adapter.submitList(goals + goals + goals + goals + goals + goals + goals + goals + goals + goals + goals + goals)
+        }
+
+        goalsViewModel.error.asLiveData().observe(viewLifecycleOwner) { errorMessage ->
+            goalsViewBinding.constraintLayoutRootGoals.showMessage(errorMessage)
+        }
+
+        goalsViewBinding.imageViewLogout.setOnClickListener {
+            goalsViewModel.performLogout()
         }
     }
 }

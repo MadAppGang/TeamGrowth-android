@@ -6,6 +6,12 @@ import androidx.core.view.WindowCompat
 import androidx.lifecycle.asLiveData
 import com.madappgang.IdentifoAuthentication
 import com.madappgang.identifolib.entities.AuthState
+import com.madappgang.identifolibui.login.IdentifoSignInActivity
+import com.madappgang.identifolibui.login.options.LoginOptions
+import com.madappgang.identifolibui.login.options.LoginProviders
+import com.madappgang.identifolibui.login.options.LoginProviders.*
+import com.madappgang.identifolibui.login.options.Style
+import com.madappgang.identifolibui.login.options.UseConditions
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,9 +32,31 @@ class MainActivity : AppCompatActivity() {
                     // user is authenticated successfully
                 }
                 else -> {
-                    // user is deauthenticated
+                    openSignInFlow()
                 }
             }
         }
+    }
+
+    private fun openSignInFlow() {
+        val style = Style(
+            companyLogo = R.drawable.ic_teamgrowth,
+            companyName = getString(R.string.app_name),
+            greetingsText = "Greetings text"
+        )
+
+        val userConditions = UseConditions(
+            userAgreement = "https://userAgreement.com/",
+            privacyPolicy = "https://privacyPolicy.com/"
+        )
+
+        val providers = listOf(EMAIL, PHONE)
+
+        val loginOptions = LoginOptions(
+            commonStyle = style,
+            providers = providers,
+            useConditions = userConditions
+        )
+        IdentifoSignInActivity.openActivity(this, loginOptions)
     }
 }

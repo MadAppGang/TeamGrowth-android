@@ -10,6 +10,7 @@ import com.madappgang.teamgrowth.R
 import com.madappgang.teamgrowth.databinding.ItemGoalBinding
 import com.madappgang.teamgrowth.domain.Goal
 import com.madappgang.teamgrowth.domain.UserGoal
+import kotlin.math.roundToInt
 
 
 /*
@@ -47,8 +48,8 @@ class GoalViewHolder(
             textVieCategory.text = String.format(context.getString(R.string.category), goal.category)
             textViewGoalText.text = goal.description
             textViewLink.text = goal.link
-            textViewProgressThisWeek.text = goal.weeklyProgress.toString()
-            textViewProgressTotal.text = goal.progress.toString()
+            textViewProgressThisWeek.text = String.format(context.getString(R.string.progressThisWeek), goal.weeklyProgress.roundToInt())
+            textViewProgressTotal.text = String.format(context.getString(R.string.progressInTotal), goal.progress.roundToInt())
         }
     }
 }

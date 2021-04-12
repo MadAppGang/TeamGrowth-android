@@ -113,6 +113,7 @@
                 android:ellipsize="end"
                 android:gravity="center|end"
                 android:maxLines="1"
+                android:textSize="@dimen/text14"
                 app:layout_constraintBottom_toBottomOf="@+id/textViewProgressThisWeek"
                 app:layout_constraintEnd_toEndOf="@+id/seekBar"
                 app:layout_constraintHorizontal_bias="0.5"

@@ -40,6 +40,7 @@ object DataModule {
         httpLoggingInterceptor: HttpLoggingInterceptor
     ) = OkHttpClient.Builder()
         .addInterceptor(IdentifoAuthentication.getIdentifoInterceptor())
+        .authenticator(IdentifoAuthentication.getIdentifoAuthenticator())
         .addInterceptor(httpLoggingInterceptor)
         .build()
         .createRetrofitInstance<TeamGrowthService>(BuildConfig.API_URL)

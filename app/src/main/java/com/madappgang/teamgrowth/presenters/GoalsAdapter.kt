@@ -1,7 +1,10 @@
 package com.madappgang.teamgrowth.presenters
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.madappgang.BaseClickListener
@@ -10,7 +13,10 @@ import com.madappgang.teamgrowth.R
 import com.madappgang.teamgrowth.databinding.ItemGoalBinding
 import com.madappgang.teamgrowth.domain.Goal
 import com.madappgang.teamgrowth.domain.UserGoal
+import com.madappgang.teamgrowth.utils.customView.WeekProgressView
+import com.madappgang.teamgrowth.utils.extensions.animateProgressBar
 import kotlin.math.roundToInt
+import kotlin.random.Random
 
 
 /*
@@ -50,7 +56,7 @@ class GoalViewHolder(
             textViewLink.text = goal.link
             textViewProgressThisWeek.text = String.format(context.getString(R.string.progressThisWeek), goal.weeklyProgress.roundToInt())
             textViewProgressTotal.text = String.format(context.getString(R.string.progressInTotal), goal.progress.roundToInt())
-            weekProgressBar.setProgresses(goal.progress.toInt(), goal.weeklyProgress.toInt())
+            weekProgressBar.animateProgressBar(goal.progress, goal.weeklyProgress)
         }
     }
 }

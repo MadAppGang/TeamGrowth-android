@@ -33,8 +33,17 @@ class WeekProgressView @JvmOverloads constructor(
     private var backgroundLineColor = 0
     private var weekStrokeWidth = 0F
 
-    private var totalProgress = 0
-    private var weekProgress = 0
+    var totalProgress = 0F
+    set(value) {
+        field = value
+        invalidate()
+    }
+
+    var weekProgress = 0F
+    set(value) {
+        field = value
+        invalidate()
+    }
 
     companion object {
         private const val HUNDRED_PERCENT = 100F
@@ -84,28 +93,28 @@ class WeekProgressView @JvmOverloads constructor(
 
             it.drawLine(startX, startY, stopX, stopY, backgroundLinePaint)
 
-            val maxWeekProgress = HUNDRED_PERCENT.coerceAtMost((totalProgress + weekProgress).toFloat())
-            val maxTotalProgress = HUNDRED_PERCENT.coerceAtMost(totalProgress.toFloat())
-            it.drawLine(
-                startX,
-                startY,
-                (stopX / HUNDRED_PERCENT) * maxWeekProgress,
-                stopY,
-                weekLinePaint
-            )
-            it.drawLine(
-                startX,
-                startY,
-                (stopX / HUNDRED_PERCENT) * maxTotalProgress,
-                stopY,
-                totalLinePaint
-            )
-        }
-    }
+            val maxWeekProgress : Float = HUNDRED_PERCENT.coerceAtMost(totalProgress + weekProgress)
+            val maxTotalProgress : Float = HUNDRED_PERCENT.coerceAtMost(totalProgress)
 
-    fun setProgresses(totalProgress : Int, weekProgress : Int) {
-        this.totalProgress = totalProgress
-        this.weekProgress = weekProgress
-        invalidate()
+            if (maxWeekProgress.toInt() > 0) {
+                it.drawLine(
+                    startX,
+                    startY,
+                    (stopX / HUNDRED_PERCENT) * maxWeekProgress,
+                    stopY,
+                    weekLinePaint
+                )
+            }
+
+            if (maxTotalProgress.toInt() > 0) {
+                it.drawLine(
+                    startX,
+                    startY,
+                    (stopX / HUNDRED_PERCENT) * maxTotalProgress,
+                    stopY,
+                    totalLinePaint
+                )
+            }
+        }
     }
 }

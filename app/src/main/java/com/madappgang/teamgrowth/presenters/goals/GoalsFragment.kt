@@ -6,7 +6,6 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
-import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.madappgang.BaseClickListener
 import com.madappgang.teamgrowth.R
@@ -15,8 +14,10 @@ import com.madappgang.teamgrowth.domain.Goal
 import com.madappgang.teamgrowth.domain.User
 import com.madappgang.teamgrowth.domain.UserGoal
 import com.madappgang.teamgrowth.presenters.GoalsAdapter
-import com.madappgang.teamgrowth.utils.extensions.*
-import com.madappgang.teamgrowth.utils.extensions.showMessage
+import com.madappgang.teamgrowth.utils.extensions.addSystemBottomPadding
+import com.madappgang.teamgrowth.utils.extensions.addSystemTopPadding
+import com.madappgang.teamgrowth.utils.extensions.animateTo
+import com.madappgang.teamgrowth.utils.extensions.safeNavigate
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.math.roundToInt
 
@@ -32,8 +33,8 @@ class GoalsFragment : Fragment(R.layout.fragment_goals) {
     private val goalsViewBinding by viewBinding(FragmentGoalsBinding::bind)
     private val goalsViewModel by viewModels<GoalsViewModel>()
 
-    private val clickBlock = BaseClickListener<UserGoal> { userGoal ->
-        val action = GoalsFragmentDirections.actionGoalsFragmentToUpdateProgressFragment(userGoal.goal)
+    private val clickBlock = BaseClickListener<Goal> { userGoal ->
+        val action = GoalsFragmentDirections.actionGoalsFragmentToUpdateProgressFragment(userGoal)
         safeNavigate(action)
     }
 
@@ -50,29 +51,41 @@ class GoalsFragment : Fragment(R.layout.fragment_goals) {
             when (viewState) {
                 is GoalsViewStates.DataFetchedSuccessfully -> showGoals(viewState.user, viewState.goals)
                 GoalsViewStates.Loading -> showLoading()
-                GoalsViewStates.Error -> {}
+                GoalsViewStates.Error -> showError()
             }
         }
 
         goalsViewBinding.imageViewLogout.setOnClickListener {
             goalsViewModel.performLogout()
         }
+
+        goalsViewBinding.includeErrorLabel.buttonTryAgain.setOnClickListener {
+            goalsViewModel.loadCurrentProgressAndGoals()
+        }
     }
 
     private fun showLoading() {
         goalsViewBinding.nestedScrollRoot.isVisible = false
         goalsViewBinding.progressGoals.isVisible = true
+        goalsViewBinding.includeErrorLabel.constraintErrorLabelRoot.isVisible = false
+    }
+
+    private fun showError() {
+        goalsViewBinding.nestedScrollRoot.isVisible = false
+        goalsViewBinding.progressGoals.isVisible = false
+        goalsViewBinding.includeErrorLabel.constraintErrorLabelRoot.isVisible = true
     }
 
     private fun showGoals(user: User, goals: List<UserGoal>) {
         goalsViewBinding.nestedScrollRoot.isVisible = true
         goalsViewBinding.progressGoals.isVisible = false
+        goalsViewBinding.includeErrorLabel.constraintErrorLabelRoot.isVisible = false
 
         goalsViewBinding.includeProgress.tpProgress.animateTo(user.overallProgress)
         goalsViewBinding.includeProgress.textViewProgress.text = String.format(
             getString(R.string.progressPercent),
             user.overallProgress.roundToInt()
         )
-        adapter.submitList(goals)
+        adapter.submitList(goals.map { it.goal })
     }
 }

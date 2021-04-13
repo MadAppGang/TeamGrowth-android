@@ -5,6 +5,7 @@ import android.animation.ObjectAnimator
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.madappgang.BaseClickListener
@@ -24,14 +25,16 @@ import kotlin.random.Random
  * Copyright (c) 2021 MadAppGang. All rights reserved.
  */
 
-class GoalsAdapter(
-    private val baseClickListener: BaseClickListener<UserGoal>
-) : ListAdapter<UserGoal, GoalViewHolder>(BaseDiffUtil<UserGoal>()) {
-    override fun onBindViewHolder(holder: GoalViewHolder, position: Int) =
-        holder.bind(getItem(position), baseClickListener)
+private val diffCallback = object : DiffUtil.ItemCallback<Goal>() {
+    override fun areItemsTheSame(oldItem: Goal, newItem: Goal): Boolean = oldItem.id == newItem.id
+    override fun areContentsTheSame(oldItem: Goal, newItem: Goal): Boolean = oldItem.id == newItem.id
+}
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GoalViewHolder =
-        GoalViewHolder.from(parent)
+class GoalsAdapter(
+    private val baseClickListener: BaseClickListener<Goal>
+) : ListAdapter<Goal, GoalViewHolder>(diffCallback) {
+    override fun onBindViewHolder(holder: GoalViewHolder, position: Int) = holder.bind(getItem(position), baseClickListener)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GoalViewHolder = GoalViewHolder.from(parent)
 }
 
 class GoalViewHolder(
@@ -45,20 +48,25 @@ class GoalViewHolder(
         }
     }
 
-    fun bind(userGoal: UserGoal, baseClickListener: BaseClickListener<UserGoal>) {
+    fun bind(goal: Goal, baseClickListener: BaseClickListener<Goal>) {
         with(itemGoalBinding) {
             val context = itemGoalBinding.root.context
-            val goal = userGoal.goal
 
-            constraintRootGoalCard.setOnClickListener { baseClickListener.clickListener(userGoal) }
+            constraintRootGoalCard.setOnClickListener { baseClickListener.clickListener(goal) }
             textVieCategory.text = String.format(context.getString(R.string.category), goal.category)
             textViewGoalText.text = goal.description
             textViewLink.text = goal.link
 
             val currentProgress = goal.progress
             val previousProgress = currentProgress - goal.progress
-            textViewProgressThisWeek.text = String.format(context.getString(R.string.progressThisWeek), currentProgress.roundToInt())
-            textViewProgressTotal.text = String.format(context.getString(R.string.progressInTotal), previousProgress.roundToInt())
+            textViewProgressThisWeek.text = String.format(
+                context.getString(R.string.progressThisWeek),
+                currentProgress.roundToInt()
+            )
+            textViewProgressTotal.text = String.format(
+                context.getString(R.string.progressInTotal),
+                previousProgress.roundToInt()
+            )
             weekProgressBar.animateProgressBar(previousProgress, currentProgress)
         }
     }

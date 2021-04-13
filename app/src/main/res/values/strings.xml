@@ -14,4 +14,7 @@
     <string name="updateProgressOnGoal">Update progress on goal</string>
     <string name="saveProgress">Save progress</string>
     <string name="cancel">Cancel</string>
+
+    <string name="somethingWentWrong">Ops, something went wrong…</string>
+    <string name="tryAgain">Try again</string>
 </resources>

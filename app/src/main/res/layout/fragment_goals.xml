@@ -47,20 +47,30 @@
         android:id="@+id/progressGoals"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:indicatorColor="@color/yellow"
         android:indeterminate="true"
+        app:indicatorColor="@color/yellow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewBackground" />
+
+    <include
+        android:id="@+id/includeErrorLabel"
+        layout="@layout/include_error_label"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMyProgress" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollRoot"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
-        android:visibility="gone"
         android:overScrollMode="never"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,7 +83,7 @@
 
             <include
                 android:id="@+id/includeProgress"
-                layout="@layout/include_total_progress"/>
+                layout="@layout/include_total_progress" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycleViewGoals"

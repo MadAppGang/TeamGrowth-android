@@ -2,6 +2,7 @@ package com.madappgang.teamgrowth.data
 
 import com.madappgang.identifolib.entities.ErrorResponse
 import com.madappgang.identifolib.extensions.Result
+import com.madappgang.teamgrowth.domain.Goal
 import com.madappgang.teamgrowth.domain.User
 import com.madappgang.teamgrowth.domain.UserGoal
 import com.madappgang.teamgrowth.utils.extensions.suspendApiCall
@@ -18,6 +19,7 @@ import javax.inject.Inject
 interface TeamGrowthRepository {
     suspend fun getUserGoals(): Result<List<UserGoal>, ErrorResponse>
     suspend fun getCurrentUser(): Result<User, ErrorResponse>
+    suspend fun updateGoal(goal: Goal): Result<Goal, ErrorResponse>
 }
 
 class TeamGrowthRepositoryImpl @Inject constructor(
@@ -36,6 +38,13 @@ class TeamGrowthRepositoryImpl @Inject constructor(
         withContext(coroutineDispatcher) {
             suspendApiCall {
                 teamGrowthService.getCurrentUser()
+            }
+        }
+
+    override suspend fun updateGoal(goal: Goal): Result<Goal, ErrorResponse> =
+        withContext(coroutineDispatcher) {
+            suspendApiCall {
+                teamGrowthService.updateGoal(goal)
             }
         }
 }

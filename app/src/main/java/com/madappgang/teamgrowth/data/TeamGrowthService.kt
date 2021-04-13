@@ -1,9 +1,9 @@
 package com.madappgang.teamgrowth.data
 
+import com.madappgang.teamgrowth.domain.Goal
 import com.madappgang.teamgrowth.domain.User
 import com.madappgang.teamgrowth.domain.UserGoal
-import retrofit2.http.GET
-import retrofit2.http.Headers
+import retrofit2.http.*
 
 
 /*
@@ -16,5 +16,11 @@ interface TeamGrowthService {
     suspend fun getUserGoals(): List<UserGoal>
 
     @GET("/api/users/me")
-    suspend fun getCurrentUser() : User
+    suspend fun getCurrentUser(): User
+
+    @POST("/api/goals/{id}")
+    suspend fun updateGoal(
+        @Body goal: Goal,
+        @Path("id") id: String = goal.id
+    ): Goal
 }

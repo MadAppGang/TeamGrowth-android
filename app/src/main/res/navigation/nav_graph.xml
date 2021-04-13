@@ -18,5 +18,9 @@
         android:id="@+id/updateProgressFragment"
         android:name="com.madappgang.teamgrowth.presenters.updateProgress.UpdateProgressFragment"
         android:label="UpdateProgressFragment"
-        tools:layout="@layout/fragment_update_progress"/>
+        tools:layout="@layout/fragment_update_progress">
+        <argument
+            android:name="goal"
+            app:argType="com.madappgang.teamgrowth.domain.Goal" />
+    </dialog>
 </navigation>

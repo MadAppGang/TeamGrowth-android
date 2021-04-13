@@ -25,16 +25,43 @@
         <item name="android:fontFamily">@font/raleway_regular</item>
     </style>
 
-    <style name="PrimaryTextViewStyle" parent="RalewayRegular">
+    <style name="PrimaryTextViewRegularStyle" parent="RalewayRegular">
         <item name="android:textColor">@color/dark</item>
     </style>
 
-    <style name="SecondaryTextViewStyle" parent="RalewayRegular">
+    <style name="SecondaryTextViewRegularStyle" parent="RalewayRegular">
         <item name="android:textColor">@color/gray</item>
     </style>
 
-    <style name="TertiaryTextViewStyle" parent="RalewayRegular">
+    <style name="TertiaryTextViewRegularStyle" parent="RalewayRegular">
         <item name="android:textColor">@color/yellow</item>
+    </style>
+
+    <style name="PrimaryTextViewBoldStyle" parent="RalewayBold">
+        <item name="android:textColor">@color/dark</item>
+    </style>
+
+    <style name="SecondaryTextViewBoldStyle" parent="RalewayBold">
+        <item name="android:textColor">@color/gray</item>
+    </style>
+
+    <style name="TertiaryTextViewBoldStyle" parent="RalewayBold">
+        <item name="android:textColor">@color/yellow</item>
+    </style>
+
+    <style name="PrimaryButtonStyle" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="android:fontFamily">@font/raleway_bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="backgroundTint">@color/yellow</item>
+        <item name="android:textColor">@color/dark</item>
+        <item name="android:textSize">@dimen/text14</item>
+    </style>
+
+    <style name="SecondaryButtonStyle" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:fontFamily">@font/raleway_bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/dark</item>
+        <item name="android:textSize">@dimen/text14</item>
     </style>
 
 </resources>

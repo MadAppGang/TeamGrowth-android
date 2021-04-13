@@ -1,7 +1,10 @@
 package com.madappgang.teamgrowth.data
 
+import com.madappgang.identifolib.entities.ErrorResponse
+import com.madappgang.identifolib.extensions.Result
 import com.madappgang.teamgrowth.domain.User
 import com.madappgang.teamgrowth.domain.UserGoal
+import com.madappgang.teamgrowth.utils.extensions.suspendApiCall
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -13,19 +16,26 @@ import javax.inject.Inject
  */
 
 interface TeamGrowthRepository {
-    suspend fun getUserGoals(): List<UserGoal>
-    suspend fun getCurrentUser(): User
+    suspend fun getUserGoals(): Result<List<UserGoal>, ErrorResponse>
+    suspend fun getCurrentUser(): Result<User, ErrorResponse>
 }
 
 class TeamGrowthRepositoryImpl @Inject constructor(
     private val teamGrowthService: TeamGrowthService,
     private val coroutineDispatcher: CoroutineDispatcher
 ) : TeamGrowthRepository {
-    override suspend fun getUserGoals(): List<UserGoal> = withContext(coroutineDispatcher) {
-        teamGrowthService.getUserGoals()
-    }
 
-    override suspend fun getCurrentUser(): User = withContext(coroutineDispatcher) {
-        teamGrowthService.getCurrentUser()
-    }
+    override suspend fun getUserGoals(): Result<List<UserGoal>, ErrorResponse> =
+        withContext(coroutineDispatcher) {
+            suspendApiCall {
+                teamGrowthService.getUserGoals()
+            }
+        }
+
+    override suspend fun getCurrentUser(): Result<User, ErrorResponse> =
+        withContext(coroutineDispatcher) {
+            suspendApiCall {
+                teamGrowthService.getCurrentUser()
+            }
+        }
 }

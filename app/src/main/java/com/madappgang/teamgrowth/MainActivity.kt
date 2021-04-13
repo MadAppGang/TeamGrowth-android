@@ -1,5 +1,6 @@
 package com.madappgang.teamgrowth
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
@@ -29,7 +30,7 @@ class MainActivity : AppCompatActivity() {
                 is AuthState.Authentificated -> {
                     val accessToken = state.accessToken
                     val user = state.identifoUser
-                    // user is authenticated successfully
+
                 }
                 else -> {
                     openSignInFlow()

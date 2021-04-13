@@ -54,9 +54,12 @@ class GoalViewHolder(
             textVieCategory.text = String.format(context.getString(R.string.category), goal.category)
             textViewGoalText.text = goal.description
             textViewLink.text = goal.link
-            textViewProgressThisWeek.text = String.format(context.getString(R.string.progressThisWeek), goal.weeklyProgress.roundToInt())
-            textViewProgressTotal.text = String.format(context.getString(R.string.progressInTotal), goal.progress.roundToInt())
-            weekProgressBar.animateProgressBar(goal.progress, goal.weeklyProgress)
+
+            val currentProgress = goal.progress
+            val previousProgress = currentProgress - goal.progress
+            textViewProgressThisWeek.text = String.format(context.getString(R.string.progressThisWeek), currentProgress.roundToInt())
+            textViewProgressTotal.text = String.format(context.getString(R.string.progressInTotal), previousProgress.roundToInt())
+            weekProgressBar.animateProgressBar(previousProgress, currentProgress)
         }
     }
 }

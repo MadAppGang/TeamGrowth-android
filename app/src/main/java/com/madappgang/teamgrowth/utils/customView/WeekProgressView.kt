@@ -93,7 +93,7 @@ class WeekProgressView @JvmOverloads constructor(
 
             it.drawLine(startX, startY, stopX, stopY, backgroundLinePaint)
 
-            val maxWeekProgress : Float = HUNDRED_PERCENT.coerceAtMost(totalProgress + weekProgress)
+            val maxWeekProgress : Float = HUNDRED_PERCENT.coerceAtMost(weekProgress)
             val maxTotalProgress : Float = HUNDRED_PERCENT.coerceAtMost(totalProgress)
 
             if (maxWeekProgress.toInt() > 0) {

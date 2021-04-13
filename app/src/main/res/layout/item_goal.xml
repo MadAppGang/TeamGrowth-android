@@ -28,7 +28,7 @@
 
             <TextView
                 android:id="@+id/textVieCategory"
-                style="@style/SecondaryTextViewStyle"
+                style="@style/SecondaryTextViewRegularStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/category"
@@ -39,7 +39,7 @@
 
             <TextView
                 android:id="@+id/textViewGoalText"
-                style="@style/PrimaryTextViewStyle"
+                style="@style/PrimaryTextViewBoldStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
@@ -65,7 +65,7 @@
 
             <TextView
                 android:id="@+id/textViewLink"
-                style="@style/PrimaryTextViewStyle"
+                style="@style/PrimaryTextViewRegularStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
@@ -93,7 +93,7 @@
 
             <TextView
                 android:id="@+id/textViewProgressThisWeek"
-                style="@style/TertiaryTextViewStyle"
+                style="@style/TertiaryTextViewRegularStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
@@ -109,7 +109,7 @@
 
             <TextView
                 android:id="@+id/textViewProgressTotal"
-                style="@style/PrimaryTextViewStyle"
+                style="@style/PrimaryTextViewRegularStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"

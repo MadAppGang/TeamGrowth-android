@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.madappgang.BaseClickListener
+import com.madappgang.BaseDiffUtil
 import com.madappgang.teamgrowth.R
 import com.madappgang.teamgrowth.databinding.ItemGoalBinding
 import com.madappgang.teamgrowth.domain.UserGoal
@@ -18,17 +19,12 @@ import kotlin.math.roundToInt
  * Copyright (c) 2021 MadAppGang. All rights reserved.
  */
 
-private val diffCallback = object : DiffUtil.ItemCallback<UserGoal>() {
-    override fun areItemsTheSame(oldItem: UserGoal, newItem: UserGoal): Boolean = oldItem.id == newItem.id
-    override fun areContentsTheSame(oldItem: UserGoal, newItem: UserGoal): Boolean = oldItem.id == newItem.id
-}
 
 class GoalsAdapter(
     private val baseClickListener: BaseClickListener<UserGoal>
-) : ListAdapter<UserGoal, GoalViewHolder>(diffCallback) {
+) : ListAdapter<UserGoal, GoalViewHolder>(BaseDiffUtil<UserGoal>()) {
     override fun onBindViewHolder(holder: GoalViewHolder, position: Int) = holder.bind(getItem(position), baseClickListener)
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GoalViewHolder =
-        GoalViewHolder.from(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GoalViewHolder = GoalViewHolder.from(parent)
 }
 
 class GoalViewHolder(

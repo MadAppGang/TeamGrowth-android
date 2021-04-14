@@ -12,13 +12,24 @@ import com.madappgang.teamgrowth.utils.customView.WeekProgressView
  */
 
 
-fun WeekProgressView.animateProgressBar(totalProgress : Float, weekProgress : Float) {
-    val totalProgressAnimator = ObjectAnimator.ofFloat(this, "totalProgress", totalProgress).apply {
+fun WeekProgressView.animateProgressBar(
+    totalProgress: Float,
+    weekProgress: Float
+) {
+    val totalProgressAnimator = ObjectAnimator.ofFloat(
+        this,
+        "totalProgress",
+        totalProgress
+    ).apply {
         duration = 500
         interpolator = AccelerateDecelerateInterpolator()
     }
 
-    val weekProgressAnimator = ObjectAnimator.ofFloat(this, "weekProgress", weekProgress).apply {
+    val weekProgressAnimator = ObjectAnimator.ofFloat(
+        this,
+        "weekProgress",
+        weekProgress
+    ).apply {
         duration = 500
         interpolator = AccelerateDecelerateInterpolator()
     }

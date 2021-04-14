@@ -5,9 +5,10 @@ import androidx.lifecycle.viewModelScope
 import com.madappgang.identifolib.extensions.onError
 import com.madappgang.identifolib.extensions.onSuccess
 import com.madappgang.teamgrowth.data.TeamGrowthRepository
-import com.madappgang.teamgrowth.domain.Goal
+import com.madappgang.teamgrowth.domain.Progress
+import com.madappgang.teamgrowth.domain.ProgressUpdate
+import com.madappgang.teamgrowth.domain.UserGoal
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -28,11 +29,16 @@ class UpdateProgressViewModel @Inject constructor(
     private val _updateGoalState = MutableStateFlow<UpdateProgressViewStates>(UpdateProgressViewStates.IDLE)
     val updateGoalState : StateFlow<UpdateProgressViewStates> = _updateGoalState.asStateFlow()
 
-    fun updateGoal(goal: Goal) {
+    fun updateGoal(progress : Int, goal: UserGoal) {
         viewModelScope.launch {
             _updateGoalState.emit(UpdateProgressViewStates.Loading)
-            teamGrowthRepository.updateGoal(goal).onSuccess { goal ->
-                _updateGoalState.emit(UpdateProgressViewStates.GoalHasBeenUpdated(goal))
+            val progress = ProgressUpdate(
+                goal.userId,
+                goal.goalId,
+                progress
+            )
+            teamGrowthRepository.updateProgress(progress).onSuccess { progress ->
+                _updateGoalState.emit(UpdateProgressViewStates.GoalHasBeenUpdated(progress))
             }.onError {
                 _updateGoalState.emit(UpdateProgressViewStates.Error)
             }

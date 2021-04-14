@@ -10,10 +10,8 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.madappgang.BaseClickListener
 import com.madappgang.teamgrowth.R
 import com.madappgang.teamgrowth.databinding.FragmentGoalsBinding
-import com.madappgang.teamgrowth.domain.Goal
 import com.madappgang.teamgrowth.domain.User
 import com.madappgang.teamgrowth.domain.UserGoal
-import com.madappgang.teamgrowth.presenters.GoalsAdapter
 import com.madappgang.teamgrowth.utils.extensions.addSystemBottomPadding
 import com.madappgang.teamgrowth.utils.extensions.addSystemTopPadding
 import com.madappgang.teamgrowth.utils.extensions.animateTo
@@ -33,7 +31,7 @@ class GoalsFragment : Fragment(R.layout.fragment_goals) {
     private val goalsViewBinding by viewBinding(FragmentGoalsBinding::bind)
     private val goalsViewModel by viewModels<GoalsViewModel>()
 
-    private val clickBlock = BaseClickListener<Goal> { userGoal ->
+    private val clickBlock = BaseClickListener<UserGoal> { userGoal ->
         val action = GoalsFragmentDirections.actionGoalsFragmentToUpdateProgressFragment(userGoal)
         safeNavigate(action)
     }
@@ -86,6 +84,6 @@ class GoalsFragment : Fragment(R.layout.fragment_goals) {
             getString(R.string.progressPercent),
             user.overallProgress.roundToInt()
         )
-        adapter.submitList(goals.map { it.goal })
+        adapter.submitList(goals)
     }
 }

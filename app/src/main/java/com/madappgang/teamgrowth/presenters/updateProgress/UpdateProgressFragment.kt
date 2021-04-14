@@ -46,7 +46,8 @@ class UpdateProgressFragment : BottomDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val goal = updateProgressArgs.goal
+        val userGoal = updateProgressArgs.goal
+        val goal = userGoal.goal
         val currentProgress = goal.progress.coerceAtMost(100F)
 
         updateProgressBinding.sliderProgress.value = currentProgress
@@ -74,7 +75,8 @@ class UpdateProgressFragment : BottomDialogFragment() {
         }
 
         updateProgressBinding.buttonSaveProgress.setOnClickListener {
-            updateProgressViewModel.updateGoal(goal.copy(weeklyProgress = currentProgress))
+            val selectedProgress = updateProgressBinding.sliderProgress.value
+            updateProgressViewModel.updateGoal(selectedProgress.roundToInt(), userGoal)
         }
 
         updateProgressBinding.includeErrorLabel.buttonTryAgain.setOnClickListener {

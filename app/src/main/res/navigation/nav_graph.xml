@@ -21,6 +21,6 @@
         tools:layout="@layout/fragment_update_progress">
         <argument
             android:name="goal"
-            app:argType="com.madappgang.teamgrowth.domain.Goal" />
+            app:argType="com.madappgang.teamgrowth.domain.UserGoal" />
     </dialog>
 </navigation>

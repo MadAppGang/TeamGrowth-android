@@ -28,12 +28,12 @@ class GoalsViewModel @Inject constructor(
     val goalsViewStates: StateFlow<GoalsViewStates> = _goalsViewStates.asStateFlow()
 
     init {
+        _goalsViewStates.value = GoalsViewStates.Loading
         loadCurrentProgressAndGoals()
     }
 
     fun loadCurrentProgressAndGoals() {
         viewModelScope.launch {
-            _goalsViewStates.emit(GoalsViewStates.Loading)
             val resultCurrentUser = teamGrowthRepository.getCurrentUser()
             val resultUserGoals = teamGrowthRepository.getUserGoals()
 

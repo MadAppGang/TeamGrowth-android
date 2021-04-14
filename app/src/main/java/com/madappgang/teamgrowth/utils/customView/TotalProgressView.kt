@@ -80,7 +80,7 @@ class TotalProgressView @JvmOverloads constructor(
         maskFilter = BlurMaskFilter(circleProgressBlurStrokeWidth, BlurMaskFilter.Blur.OUTER)
     }
 
-    private var progress = 0F
+    var progress = 0F
     set(value) {
         field = value
         invalidate()

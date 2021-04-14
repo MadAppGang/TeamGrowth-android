@@ -75,7 +75,7 @@ class GoalsFragment : Fragment(R.layout.fragment_goals) {
 
         setFragmentResultListener(PROGRESS_REQUEST_KEY) { requestKey, bundle ->
             val result = bundle.getParcelable<Progress>(PROGRESS_BUNDLE_KEY)
-            Toast.makeText(requireContext(), result?.value.toString(), Toast.LENGTH_LONG).show()
+            goalsViewModel.loadCurrentProgressAndGoals()
         }
     }
 

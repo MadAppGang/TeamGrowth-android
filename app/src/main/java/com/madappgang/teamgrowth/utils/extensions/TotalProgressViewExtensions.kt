@@ -10,8 +10,8 @@ import com.madappgang.teamgrowth.utils.customView.TotalProgressView
  * Copyright (c) 2021 MadAppGang. All rights reserved.
  */
 
-fun TotalProgressView.animateTo(progress: Float) {
-    ObjectAnimator.ofFloat(this, "progress", progress).apply {
+fun TotalProgressView.animateTo(progressTo: Float) {
+    ObjectAnimator.ofFloat(this, "progress", this.progress, progressTo).apply {
         interpolator = AccelerateDecelerateInterpolator()
         duration = 2000
         start()

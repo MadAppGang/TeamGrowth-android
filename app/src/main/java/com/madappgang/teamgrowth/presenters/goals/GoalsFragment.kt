@@ -2,14 +2,18 @@ package com.madappgang.teamgrowth.presenters.goals
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.android.material.snackbar.Snackbar
 import com.madappgang.BaseClickListener
 import com.madappgang.teamgrowth.R
 import com.madappgang.teamgrowth.databinding.FragmentGoalsBinding
+import com.madappgang.teamgrowth.domain.Progress
 import com.madappgang.teamgrowth.domain.User
 import com.madappgang.teamgrowth.domain.UserGoal
 import com.madappgang.teamgrowth.utils.extensions.addSystemBottomPadding
@@ -27,6 +31,11 @@ import kotlin.math.roundToInt
 
 @AndroidEntryPoint
 class GoalsFragment : Fragment(R.layout.fragment_goals) {
+
+    companion object {
+        const val PROGRESS_REQUEST_KEY = "progress_request_key"
+        const val PROGRESS_BUNDLE_KEY = "progress_bundle_key"
+    }
 
     private val goalsViewBinding by viewBinding(FragmentGoalsBinding::bind)
     private val goalsViewModel by viewModels<GoalsViewModel>()
@@ -47,7 +56,10 @@ class GoalsFragment : Fragment(R.layout.fragment_goals) {
 
         goalsViewModel.goalsViewStates.asLiveData().observe(viewLifecycleOwner) { viewState ->
             when (viewState) {
-                is GoalsViewStates.DataFetchedSuccessfully -> showGoals(viewState.user, viewState.goals)
+                is GoalsViewStates.DataFetchedSuccessfully -> showGoals(
+                    viewState.user,
+                    viewState.goals
+                )
                 GoalsViewStates.Loading -> showLoading()
                 GoalsViewStates.Error -> showError()
             }
@@ -59,6 +71,11 @@ class GoalsFragment : Fragment(R.layout.fragment_goals) {
 
         goalsViewBinding.includeErrorLabel.buttonTryAgain.setOnClickListener {
             goalsViewModel.loadCurrentProgressAndGoals()
+        }
+
+        setFragmentResultListener(PROGRESS_REQUEST_KEY) { requestKey, bundle ->
+            val result = bundle.getParcelable<Progress>(PROGRESS_BUNDLE_KEY)
+            Toast.makeText(requireContext(), result?.value.toString(), Toast.LENGTH_LONG).show()
         }
     }
 

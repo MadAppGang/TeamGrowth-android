@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
+import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.findNavController
@@ -13,6 +15,9 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.slider.Slider
 import com.madappgang.teamgrowth.R
 import com.madappgang.teamgrowth.databinding.FragmentUpdateProgressBinding
+import com.madappgang.teamgrowth.domain.Progress
+import com.madappgang.teamgrowth.presenters.goals.GoalsFragment.Companion.PROGRESS_BUNDLE_KEY
+import com.madappgang.teamgrowth.presenters.goals.GoalsFragment.Companion.PROGRESS_REQUEST_KEY
 import com.madappgang.teamgrowth.utils.BottomDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.math.roundToInt
@@ -47,8 +52,7 @@ class UpdateProgressFragment : BottomDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val userGoal = updateProgressArgs.goal
-        val goal = userGoal.goal
-        val currentProgress = goal.progress.coerceAtMost(100F)
+        val currentProgress = userGoal.value.coerceAtMost(100F)
 
         updateProgressBinding.sliderProgress.value = currentProgress
         updateProgressBinding.textViewProgress.text = String.format(getString(R.string.progressPercent), currentProgress.roundToInt())
@@ -67,7 +71,7 @@ class UpdateProgressFragment : BottomDialogFragment() {
 
         updateProgressViewModel.updateGoalState.asLiveData().observe(viewLifecycleOwner) { state ->
             when (state) {
-                is UpdateProgressViewStates.GoalHasBeenUpdated -> closeDialog()
+                is UpdateProgressViewStates.GoalHasBeenUpdated -> closeDialog(state.progress)
                 UpdateProgressViewStates.Error -> showError()
                 UpdateProgressViewStates.Loading -> showLoading()
                 UpdateProgressViewStates.IDLE -> showSlider()
@@ -108,7 +112,8 @@ class UpdateProgressFragment : BottomDialogFragment() {
         updateProgressBinding.buttonCancel.isVisible = false
     }
 
-    private fun closeDialog() {
+    private fun closeDialog(progress : Progress) {
+        setFragmentResult(PROGRESS_REQUEST_KEY, bundleOf(PROGRESS_BUNDLE_KEY to progress))
         findNavController().popBackStack()
     }
 

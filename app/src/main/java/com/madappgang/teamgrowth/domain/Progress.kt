@@ -1,5 +1,7 @@
 package com.madappgang.teamgrowth.domain
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -9,6 +11,7 @@ import kotlinx.serialization.Serializable
  * Copyright (c) 2021 MadAppGang. All rights reserved.
  */
 
+@Parcelize
 @Serializable
 data class Progress(
     @SerialName("id") val id: String,
@@ -19,4 +22,4 @@ data class Progress(
     @SerialName("weeklyValue") val weeklyValue: Int,
     @SerialName("createdAt") val createdAt: String,
     @SerialName("updatedAt") val updatedAt: String
-)
+) : Parcelable

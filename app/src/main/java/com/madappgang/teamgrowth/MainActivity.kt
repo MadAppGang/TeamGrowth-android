@@ -1,6 +1,5 @@
 package com.madappgang.teamgrowth
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
@@ -9,8 +8,8 @@ import com.madappgang.IdentifoAuthentication
 import com.madappgang.identifolib.entities.AuthState
 import com.madappgang.identifolibui.login.IdentifoSignInActivity
 import com.madappgang.identifolibui.login.options.LoginOptions
-import com.madappgang.identifolibui.login.options.LoginProviders
-import com.madappgang.identifolibui.login.options.LoginProviders.*
+import com.madappgang.identifolibui.login.options.LoginProviders.EMAIL
+import com.madappgang.identifolibui.login.options.LoginProviders.PHONE
 import com.madappgang.identifolibui.login.options.Style
 import com.madappgang.identifolibui.login.options.UseConditions
 import dagger.hilt.android.AndroidEntryPoint

@@ -21,15 +21,15 @@
 
     <!-- text view styles -->
     <style name="Widget.TeamGrowth.Text1">
-        <item name="android:textColor">?attr/colorOnPrimarySurface1</item>
+        <item name="android:textColor">?attr/colorOnSurface1</item>
     </style>
 
     <style name="Widget.TeamGrowth.Text2">
-        <item name="android:textColor">?attr/colorOnPrimarySurface2</item>
+        <item name="android:textColor">?attr/colorOnSurface2</item>
     </style>
 
     <style name="Widget.TeamGrowth.Text3">
-        <item name="android:textColor">?attr/colorOnPrimarySurface3</item>
+        <item name="android:textColor">?attr/colorOnSurface3</item>
     </style>
 
 </resources>

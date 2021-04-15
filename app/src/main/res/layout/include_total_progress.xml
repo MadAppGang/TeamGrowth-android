@@ -14,7 +14,7 @@
         android:rotation="270"
         app:progressCircleColor="?attr/colorPrimary"
         app:circleProgressBlurStrokeWidth="4dp"
-        app:backgroundCircleColor="?attr/colorOnPrimarySurface2"
+        app:backgroundCircleColor="?attr/colorOnSurface2"
         app:circleBackgroundStokeWidth="4dp"
         app:circleProgressStrokeWidth="8dp"
         app:layout_constraintBottom_toBottomOf="parent"

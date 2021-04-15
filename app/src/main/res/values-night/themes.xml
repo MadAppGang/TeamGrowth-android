@@ -11,9 +11,9 @@
         <item name="colorSurface">@color/gray_400</item>
         <item name="colorOnSurface">@color/gray_200</item>
 
-        <item name="colorOnPrimarySurface1">?attr/colorOnBackground</item>
-        <item name="colorOnPrimarySurface2">@color/gray_100</item>
-        <item name="colorOnPrimarySurface3">?attr/colorPrimary</item>
+        <item name="colorOnSurface1">?attr/colorOnBackground</item>
+        <item name="colorOnSurface2">@color/gray_100</item>
+        <item name="colorOnSurface3">?attr/colorPrimary</item>
 
         <item name="widgetMaterialText1">@style/Widget.TeamGrowth.Text1</item>
         <item name="widgetMaterialText2">@style/Widget.TeamGrowth.Text2</item>

@@ -24,14 +24,10 @@
     <attr name="widgetMaterialText2"/>
     <attr name="widgetMaterialText3"/>
 
-
     <!-- color attributes -->
-    <attr name="colorOnPrimarySurface1"/>
-    <attr name="colorOnPrimarySurface2"/>
-    <attr name="colorOnPrimarySurface3"/>
-
-
-
+    <attr name="colorOnSurface1"/>
+    <attr name="colorOnSurface2"/>
+    <attr name="colorOnSurface3"/>
 
     <declare-styleable name="WeekProgressView">
         <attr name="totalProgressLineColor" format="color" />

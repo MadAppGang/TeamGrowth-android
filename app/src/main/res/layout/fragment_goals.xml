@@ -12,7 +12,7 @@
         android:id="@+id/imageViewLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:tint="?attr/colorOnPrimarySurface2"
+        app:tint="?attr/colorOnSurface2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_logout" />

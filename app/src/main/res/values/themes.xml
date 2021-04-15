@@ -42,5 +42,9 @@
         <item name="android:navigationBarColor">@color/systemNavigationBarColor</item>
     </style>
 
+    <style name="Theme.TeamGrowth.Launcher">
+        <item name="android:windowBackground">@drawable/bg_splash_screen</item>
+    </style>
+
 
 </resources>

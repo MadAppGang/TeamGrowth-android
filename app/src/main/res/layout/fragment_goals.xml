@@ -19,7 +19,7 @@
 
     <TextView
         android:id="@+id/textViewMyProgress"
-        android:textAppearance="?attr/textAppearanceHeadline4"
+        android:textAppearance="?attr/textAppearanceTitle4"
         style="@style/Widget.TeamGrowth.Text1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

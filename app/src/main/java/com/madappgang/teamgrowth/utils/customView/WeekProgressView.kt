@@ -81,6 +81,7 @@ class WeekProgressView @JvmOverloads constructor(
         strokeCap = Paint.Cap.ROUND
         strokeWidth = weekStrokeWidth
         color = backgroundLineColor
+        alpha = 40
     }
 
     override fun onDraw(canvas: Canvas?) {

@@ -61,6 +61,7 @@ class TotalProgressView @JvmOverloads constructor(
         color = backgroundCircleColor
         strokeWidth = circleBackgroundStokeWidth
         style = Paint.Style.STROKE
+        alpha = 40
     }
 
     private val progressCirclePaint = Paint().apply {

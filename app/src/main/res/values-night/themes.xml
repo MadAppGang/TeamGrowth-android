@@ -1,16 +1,43 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.TeamGrowth" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.TeamGrowth" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/yellow</item>
+        <item name="colorPrimaryVariant">@color/darkYellow</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <item name="background">@color/gray_700</item>
+        <item name="colorOnBackground">@color/white</item>
+        <item name="colorSurface">@color/gray_400</item>
+
+        <item name="colorOnPrimarySurface1">?attr/colorOnBackground</item>
+        <item name="colorOnPrimarySurface2">@color/gray_100</item>
+        <item name="colorOnPrimarySurface3">?attr/colorPrimary</item>
+
+        <item name="widgetMaterialText1">@style/Widget.TeamGrowth.Text1</item>
+        <item name="widgetMaterialText2">@style/Widget.TeamGrowth.Text2</item>
+        <item name="widgetMaterialText3">@style/Widget.TeamGrowth.Text3</item>
+
+        <item name="textAppearanceQuote">@style/TextAppearance.TeamGrowth.Quote</item>
+        <item name="textAppearanceTitle1">@style/TextAppearance.TeamGrowth.Title1</item>
+        <item name="textAppearanceTitle2">@style/TextAppearance.TeamGrowth.Title2</item>
+        <item name="textAppearanceTitle3">@style/TextAppearance.TeamGrowth.Title3</item>
+        <item name="textAppearanceTitle4">@style/TextAppearance.TeamGrowth.Title4</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.TeamGrowth.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.TeamGrowth.Body2</item>
+        <item name="textAppearanceBody3">@style/TextAppearance.TeamGrowth.Body3</item>
+        <item name="textAppearanceBody4">@style/TextAppearance.TeamGrowth.Body4</item>
+        <item name="textAppearanceBody5">@style/TextAppearance.TeamGrowth.Body5</item>
+        <item name="textAppearanceCaption1">@style/TextAppearance.TeamGrowth.Caption1</item>
+        <item name="textAppearanceCaption2">@style/TextAppearance.TeamGrowth.Caption2</item>
+        <item name="textAppearanceCaption3">@style/TextAppearance.TeamGrowth.Caption3</item>
+        <item name="textAppearanceButton">@style/TextAppearance.TeamGrowth.Button</item>
+        <item name="materialButtonStyle">@style/Widget.TeamGrowth.Button1</item>
+        <item name="widgetMaterialButton1">@style/Widget.TeamGrowth.Button1</item>
+        <item name="widgetMaterialButton2">@style/Widget.TeamGrowth.Button2</item>
+        <item name="widgetMaterialButton3">@style/Widget.TeamGrowth.Button3</item>
+
+        <item name="android:statusBarColor">@color/systemStatusBarColor</item>
+        <item name="android:navigationBarColor">@color/systemNavigationBarColor</item>
     </style>
 </resources>

@@ -1,34 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- text attributes -->
-    <attr name="textAppearanceQuote"/>
-    <attr name="textAppearanceTitle1"/>
-    <attr name="textAppearanceTitle2"/>
-    <attr name="textAppearanceTitle3"/>
-    <attr name="textAppearanceTitle4"/>
-    <attr name="textAppearanceBody1"/>
-    <attr name="textAppearanceBody2"/>
-    <attr name="textAppearanceBody3"/>
-    <attr name="textAppearanceBody4"/>
-    <attr name="textAppearanceBody5"/>
-    <attr name="textAppearanceCaption1"/>
-    <attr name="textAppearanceCaption2"/>
-    <attr name="textAppearanceCaption3"/>
-
-    <!-- widget attributes -->
-    <attr name="widgetMaterialButton1"/>
-    <attr name="widgetMaterialButton2"/>
-    <attr name="widgetMaterialButton3"/>
-
-    <attr name="widgetMaterialText1"/>
-    <attr name="widgetMaterialText2"/>
-    <attr name="widgetMaterialText3"/>
-
-    <!-- color attributes -->
-    <attr name="colorOnSurface1"/>
-    <attr name="colorOnSurface2"/>
-    <attr name="colorOnSurface3"/>
-
     <declare-styleable name="WeekProgressView">
         <attr name="totalProgressLineColor" format="color" />
         <attr name="weekProgressLineColor" format="color" />

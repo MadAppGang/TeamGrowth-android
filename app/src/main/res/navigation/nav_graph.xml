@@ -23,4 +23,5 @@
             android:name="goal"
             app:argType="com.madappgang.teamgrowth.domain.UserGoal" />
     </dialog>
+
 </navigation>

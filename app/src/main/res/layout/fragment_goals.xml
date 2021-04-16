@@ -28,7 +28,6 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:text="@string/myProgress"
-        android:textSize="@dimen/text18"
         app:layout_constraintBottom_toBottomOf="@+id/imageViewLogout"
         app:layout_constraintEnd_toStartOf="@+id/imageViewLogout"
         app:layout_constraintStart_toStartOf="parent"

@@ -34,9 +34,9 @@
         <item name="textAppearanceCaption3">@style/TextAppearance.TeamGrowth.Caption3</item>
         <item name="textAppearanceButton">@style/TextAppearance.TeamGrowth.Button</item>
         <item name="materialButtonStyle">@style/Widget.TeamGrowth.Button1</item>
-        <item name="widgetMaterialButton1">@style/Widget.TeamGrowth.Button1</item>
-        <item name="widgetMaterialButton2">@style/Widget.TeamGrowth.Button2</item>
-        <item name="widgetMaterialButton3">@style/Widget.TeamGrowth.Button3</item>
+        <item name="widgetButton1">@style/Widget.TeamGrowth.Button1</item>
+        <item name="widgetButton2">@style/Widget.TeamGrowth.Button2</item>
+        <item name="widgetButton3">@style/Widget.TeamGrowth.Button3</item>
 
         <item name="android:statusBarColor">@color/systemStatusBarColor</item>
         <item name="android:navigationBarColor">@color/systemNavigationBarColor</item>

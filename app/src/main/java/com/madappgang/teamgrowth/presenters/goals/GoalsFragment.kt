@@ -1,14 +1,26 @@
 package com.madappgang.teamgrowth.presenters.goals
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.android.material.snackbar.Snackbar
 import com.madappgang.BaseClickListener
+import com.madappgang.IdentifoAuthentication
+import com.madappgang.identifolib.entities.AuthState
+import com.madappgang.identifolibui.login.WelcomeLoginFragment
+import com.madappgang.identifolibui.login.options.LoginOptions
+import com.madappgang.identifolibui.login.options.LoginProviders
+import com.madappgang.identifolibui.login.options.Style
+import com.madappgang.identifolibui.login.options.UseConditions
 import com.madappgang.teamgrowth.R
 import com.madappgang.teamgrowth.databinding.FragmentGoalsBinding
 import com.madappgang.teamgrowth.domain.Progress
@@ -52,19 +64,30 @@ class GoalsFragment : Fragment(R.layout.fragment_goals) {
 
         goalsViewBinding.recycleViewGoals.adapter = adapter
 
+        goalsViewModel.loadCurrentProgressAndGoals()
         goalsViewModel.goalsViewStates.asLiveData().observe(viewLifecycleOwner) { viewState ->
             when (viewState) {
-                is GoalsViewStates.DataFetchedSuccessfully -> showGoals(
-                    viewState.user,
-                    viewState.goals
-                )
+                is GoalsViewStates.DataFetchedSuccessfully -> showGoals(viewState.user, viewState.goals)
                 GoalsViewStates.Loading -> showLoading()
                 GoalsViewStates.Error -> showError()
             }
         }
 
+        goalsViewModel.logOut.asLiveData().observe(viewLifecycleOwner) { isLogOutSuccess ->
+            if (isLogOutSuccess) {
+                checkLoggingState()
+            } else {
+                Snackbar.make(
+                    goalsViewBinding.constraintLayoutRootGoals,
+                    getString(R.string.somethingWentWrong),
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
+        }
+
         goalsViewBinding.imageViewLogout.setOnClickListener {
             goalsViewModel.performLogout()
+            checkLoggingState()
         }
 
         goalsViewBinding.includeErrorLabel.buttonTryAgain.setOnClickListener {
@@ -72,9 +95,13 @@ class GoalsFragment : Fragment(R.layout.fragment_goals) {
         }
 
         setFragmentResultListener(PROGRESS_REQUEST_KEY) { requestKey, bundle ->
-            val result = bundle.getParcelable<Progress>(PROGRESS_BUNDLE_KEY)
             goalsViewModel.loadCurrentProgressAndGoals()
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        checkLoggingState()
     }
 
     private fun showLoading() {
@@ -100,5 +127,46 @@ class GoalsFragment : Fragment(R.layout.fragment_goals) {
             user.overallProgress.roundToInt()
         )
         adapter.submitList(goals)
+    }
+
+    private fun checkLoggingState() {
+        IdentifoAuthentication.fetchAuthState { state: AuthState ->
+            when (state) {
+                is AuthState.Authentificated -> {
+                    val accessToken = state.accessToken
+                    val user = state.identifoUser
+
+                }
+                else -> {
+                    openSignInFlow()
+                }
+            }
+        }
+    }
+
+    private fun openSignInFlow() {
+        val style = Style(
+            companyLogo = R.drawable.ic_teamgrowth,
+            companyName = getString(R.string.app_name),
+            greetingsText = getString(R.string.congrats)
+        )
+
+        val userConditions = UseConditions(
+            userAgreement = "https://userAgreement.com/",
+            privacyPolicy = "https://privacyPolicy.com/"
+        )
+
+        val providers = listOf(LoginProviders.EMAIL, LoginProviders.PHONE)
+
+        val loginOptions = LoginOptions(
+            commonStyle = style,
+            providers = providers,
+            useConditions = userConditions
+        )
+
+        findNavController().navigate(
+            R.id.action_goalsFragment_to_navigation_graph_login,
+            WelcomeLoginFragment.putArguments(loginOptions)
+        )
     }
 }

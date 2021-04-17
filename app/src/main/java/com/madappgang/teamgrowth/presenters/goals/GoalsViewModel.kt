@@ -5,11 +5,11 @@ import androidx.lifecycle.viewModelScope
 import com.madappgang.IdentifoAuthentication
 import com.madappgang.identifolib.extensions.Result
 import com.madappgang.identifolib.extensions.isSuccessful
+import com.madappgang.identifolib.extensions.onError
+import com.madappgang.identifolib.extensions.onSuccess
 import com.madappgang.teamgrowth.data.TeamGrowthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -27,12 +27,11 @@ class GoalsViewModel @Inject constructor(
     private val _goalsViewStates = MutableStateFlow<GoalsViewStates>(GoalsViewStates.IDLE)
     val goalsViewStates: StateFlow<GoalsViewStates> = _goalsViewStates.asStateFlow()
 
-    init {
-        _goalsViewStates.value = GoalsViewStates.Loading
-        loadCurrentProgressAndGoals()
-    }
+    private val _logOut = MutableSharedFlow<Boolean>()
+    val logOut : SharedFlow<Boolean> = _logOut.asSharedFlow()
 
     fun loadCurrentProgressAndGoals() {
+        _goalsViewStates.value = GoalsViewStates.Loading
         viewModelScope.launch {
             val resultCurrentUser = teamGrowthRepository.getCurrentUser()
             val resultUserGoals = teamGrowthRepository.getUserGoals()
@@ -49,7 +48,11 @@ class GoalsViewModel @Inject constructor(
 
     fun performLogout() {
         viewModelScope.launch {
-            IdentifoAuthentication.logout()
+            IdentifoAuthentication.logout().onSuccess {
+                _logOut.emit(true)
+            }.onError {
+                _logOut.emit(false)
+            }
         }
     }
 }

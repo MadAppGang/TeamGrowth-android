@@ -13,6 +13,13 @@
         <action
             android:id="@+id/action_goalsFragment_to_updateProgressFragment"
             app:destination="@id/updateProgressFragment" />
+        <action
+            android:id="@+id/action_goalsFragment_to_navigation_graph_login"
+            app:destination="@id/navigation_graph_login"
+            app:enterAnim="@anim/enter_right"
+            app:exitAnim="@anim/exit_left"
+            app:popEnterAnim="@anim/enter_left"
+            app:popExitAnim="@anim/exit_right"/>
     </fragment>
     <dialog
         android:id="@+id/updateProgressFragment"
@@ -23,5 +30,6 @@
             android:name="goal"
             app:argType="com.madappgang.teamgrowth.domain.UserGoal" />
     </dialog>
+    <include app:graph="@navigation/navigation_graph_sign_in" />
 
 </navigation>

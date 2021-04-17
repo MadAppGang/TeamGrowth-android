@@ -9,6 +9,7 @@
     <string name="completed">Completed</string>
     <string name="progressAccordingToPlan">Go according to plan</string>
     <string name="progressPercent">%d\%%</string>
+    <string name="congrats">Congrats! If you want to develop professionally, then you are in the right place.</string>
 
     <!-- update progress screen -->
     <string name="updateProgressOnGoal">Update progress on goal</string>

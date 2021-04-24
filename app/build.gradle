@@ -40,10 +40,24 @@ android {
         buildConfigField "String", "API_URL", localProperties['apiUrl']
     }
 
+    signingConfigs {
+        release {
+            storeFile file(localProperties['keyStoragePath'])
+            storePassword localProperties['storePassword']
+            keyAlias localProperties['keyAlias']
+            keyPassword localProperties['keyPassword']
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            signingConfig null
         }
     }
     compileOptions {

@@ -23,6 +23,7 @@ data class User(
     @SerialName("timezone") val timezone: String,
     @SerialName("overallProgress") val overallProgress: Float,
     @SerialName("weeklyProgress") val weeklyProgress: Float,
+    @SerialName("deleted") val deleted : Boolean,
     @SerialName("createdAt") val createdAt: String,
     @SerialName("updatedAt") val updatedAt: String
 )

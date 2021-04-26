@@ -20,6 +20,9 @@ data class UserGoal(
     @SerialName("active") val active: Boolean,
     @SerialName("value") val value: Float,
     @SerialName("weeklyValue") val weeklyValue: Float,
+    @SerialName("deleted") val deleted : Boolean,
+    @SerialName("month") val month : String,
+    @SerialName("year") val year : Int,
     @SerialName("createdAt") val createdAt: String,
     @SerialName("updatedAt") val updatedAt: String,
     @SerialName("goal") val goal: Goal

@@ -30,8 +30,12 @@ class GoalsViewModel @Inject constructor(
     private val _logOut = MutableSharedFlow<Boolean>()
     val logOut : SharedFlow<Boolean> = _logOut.asSharedFlow()
 
-    fun loadCurrentProgressAndGoals() {
+    init {
         _goalsViewStates.value = GoalsViewStates.Loading
+        loadCurrentProgressAndGoals()
+    }
+
+    fun loadCurrentProgressAndGoals() {
         viewModelScope.launch {
             val resultCurrentUser = teamGrowthRepository.getCurrentUser()
             val resultUserGoals = teamGrowthRepository.getUserGoals()

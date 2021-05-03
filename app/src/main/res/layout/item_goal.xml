@@ -39,7 +39,7 @@
 
             <TextView
                 android:id="@+id/textViewGoalText"
-                android:textAppearance="?attr/textAppearanceTitle4"
+                android:textAppearance="?attr/textAppearanceTitle2"
                 style="?attr/widgetMaterialText1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

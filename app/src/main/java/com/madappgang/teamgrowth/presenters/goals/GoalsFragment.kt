@@ -152,8 +152,8 @@ class GoalsFragment : Fragment(R.layout.fragment_goals) {
         )
 
         val userConditions = UseConditions(
-            userAgreement = "https://userAgreement.com/",
-            privacyPolicy = "https://privacyPolicy.com/"
+            userAgreement = "https://madappgang.com/",
+            privacyPolicy = "https://madappgang.com/"
         )
 
         val providers = listOf(LoginProviders.EMAIL, LoginProviders.PHONE)

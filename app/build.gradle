@@ -78,7 +78,7 @@ dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
-    def identifoVersion = "0.0.2.8"
+    def identifoVersion = "0.0.2.10"
     implementation "com.github.MadAppGang.identifo-android:core:${identifoVersion}"
     implementation "com.github.MadAppGang.identifo-android:ui:${identifoVersion}"
 
@@ -93,8 +93,8 @@ dependencies {
     implementation 'com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.4.4'
     implementation "androidx.constraintlayout:constraintlayout:2.0.4"
     implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
-    implementation 'androidx.fragment:fragment-ktx:1.3.2'
-    implementation "androidx.core:core-ktx:1.6.0-alpha01"
+    implementation 'androidx.fragment:fragment-ktx:1.3.3'
+    implementation "androidx.core:core-ktx:1.6.0-alpha02"
 
     def navigationVersion = "2.3.5"
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"

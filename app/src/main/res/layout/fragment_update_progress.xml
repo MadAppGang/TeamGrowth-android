@@ -15,7 +15,7 @@
         android:layout_marginEnd="32dp"
         android:gravity="center"
         android:text="@string/updateProgressOnGoal"
-        android:textAppearance="?attr/textAppearanceTitle3"
+        android:textAppearance="?attr/textAppearanceTitle1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -69,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="12%"
-        android:textAppearance="?attr/textAppearanceTitle3"
+        android:textAppearance="?attr/textAppearanceTitle2"
         app:layout_constraintEnd_toEndOf="@+id/textViewUpdateProgress"
         app:layout_constraintStart_toStartOf="@+id/textViewUpdateProgress"
         app:layout_constraintTop_toBottomOf="@+id/textViewUpdateProgress" />

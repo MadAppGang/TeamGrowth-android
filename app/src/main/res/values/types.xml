@@ -8,27 +8,12 @@
     </style>
 
     <!-- headers -->
-    <style name="TextAppearance.TeamGrowth.Quote">
-        <item name="android:fontFamily">@font/raleway_medium</item>
-        <item name="android:textSize">@dimen/size36</item>
-    </style>
-
     <style name="TextAppearance.TeamGrowth.Title1">
-        <item name="android:fontFamily">@font/raleway_extra_bold</item>
-        <item name="android:textSize">@dimen/size32</item>
-    </style>
-
-    <style name="TextAppearance.TeamGrowth.Title2">
-        <item name="android:fontFamily">@font/raleway_semi_bold</item>
-        <item name="android:textSize">@dimen/size24</item>
-    </style>
-
-    <style name="TextAppearance.TeamGrowth.Title3">
         <item name="android:fontFamily">@font/raleway_extra_bold</item>
         <item name="android:textSize">@dimen/size22</item>
     </style>
 
-    <style name="TextAppearance.TeamGrowth.Title4">
+    <style name="TextAppearance.TeamGrowth.Title2">
         <item name="android:fontFamily">@font/raleway_semi_bold</item>
         <item name="android:textSize">@dimen/size18</item>
     </style>
@@ -36,33 +21,18 @@
     <!-- bodies -->
     <style name="TextAppearance.TeamGrowth.Body1">
         <item name="android:textSize">@dimen/size16</item>
-        <item name="android:fontFamily">@font/raleway_semi_bold</item>
-    </style>
-
-    <style name="TextAppearance.TeamGrowth.Body2">
-        <item name="android:textSize">@dimen/size16</item>
         <item name="android:fontFamily">@font/raleway_medium</item>
     </style>
 
-    <style name="TextAppearance.TeamGrowth.Body3">
-        <item name="android:textSize">@dimen/size14</item>
-        <item name="android:fontFamily">@font/raleway_bold</item>
-    </style>
-
-    <style name="TextAppearance.TeamGrowth.Body4">
-        <item name="android:textSize">@dimen/size14</item>
-        <item name="android:fontFamily">@font/raleway_semi_bold</item>
-    </style>
-
-    <style name="TextAppearance.TeamGrowth.Body5">
+    <style name="TextAppearance.TeamGrowth.Body2">
         <item name="android:textSize">@dimen/size14</item>
         <item name="android:fontFamily">@font/raleway_medium</item>
     </style>
 
     <!-- captions -->
     <style name="TextAppearance.TeamGrowth.Caption1">
-        <item name="android:textSize">@dimen/size13</item>
-        <item name="android:fontFamily">@font/raleway_bold</item>
+        <item name="android:textSize">@dimen/size14</item>
+        <item name="android:fontFamily">@font/raleway_semi_bold</item>
     </style>
 
     <style name="TextAppearance.TeamGrowth.Caption2">
@@ -70,7 +40,7 @@
         <item name="android:fontFamily">@font/raleway_semi_bold</item>
     </style>
 
-    <style name="TextAppearance.TeamGrowth.Caption3">
+    <style name="TextAppearance.TeamGrowth.ErrorText">
         <item name="android:textSize">@dimen/size12</item>
         <item name="android:fontFamily">@font/raleway_medium</item>
     </style>

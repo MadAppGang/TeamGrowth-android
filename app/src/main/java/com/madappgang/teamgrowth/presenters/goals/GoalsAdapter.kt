@@ -2,6 +2,7 @@ package com.madappgang.teamgrowth.presenters.goals
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -46,6 +47,10 @@ class GoalViewHolder(
             constraintRootGoalCard.setOnClickListener { baseClickListener.clickListener(userGoal) }
             textVieCategory.text = String.format(context.getString(R.string.category), goal.category)
             textViewGoalText.text = goal.description
+
+            val showLink = goal.link.isNotBlank()
+            imageViewLink.isVisible = showLink
+            textViewLink.isVisible = showLink
             textViewLink.text = goal.link
 
             val currentProgress = userGoal.value

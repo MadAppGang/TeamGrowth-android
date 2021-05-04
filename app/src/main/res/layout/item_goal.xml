@@ -51,7 +51,7 @@
                 tools:text="Read the bookvRead the bookRead the bookRead the bookRead the bookRead the bookRead the bookRead the bookRead the bookRead the book" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/imageViewLink"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="8dp"
@@ -73,11 +73,11 @@
                 android:ellipsize="end"
                 android:gravity="left|center"
                 android:maxLines="1"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                app:layout_constraintBottom_toBottomOf="@+id/imageViewLink"
                 app:layout_constraintEnd_toEndOf="@+id/textViewGoalText"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toTopOf="@+id/imageView"
+                app:layout_constraintStart_toEndOf="@+id/imageViewLink"
+                app:layout_constraintTop_toTopOf="@+id/imageViewLink"
                 tools:text="LinkLinkLinkLinkLinkLinkLinkLinkLinkLinkLinkLinkLinkLinkLink" />
 
             <com.madappgang.teamgrowth.utils.customView.WeekProgressView
@@ -90,8 +90,8 @@
                 app:totalProgressLineColor="?attr/colorOnSurface1"
                 app:weekProgressLineColor="?attr/colorOnSurface3"
                 app:layout_constraintEnd_toEndOf="@+id/textViewGoalText"
-                app:layout_constraintStart_toStartOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                app:layout_constraintStart_toStartOf="@+id/imageViewLink"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewLink" />
 
             <TextView
                 android:id="@+id/textViewProgressThisWeek"

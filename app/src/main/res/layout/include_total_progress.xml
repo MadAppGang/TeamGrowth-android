@@ -10,17 +10,19 @@
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:padding="12dp"
         android:rotation="270"
-        app:progressCircleColor="?attr/colorPrimary"
-        app:circleProgressBlurStrokeWidth="4dp"
         app:backgroundCircleColor="?attr/colorOnSurface2"
         app:circleBackgroundStokeWidth="4dp"
+        app:circleProgressBlurStrokeWidth="4dp"
         app:circleProgressStrokeWidth="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:progressCircleColor="?attr/colorPrimary" />
 
     <TextView
         android:id="@+id/textViewCompleted"

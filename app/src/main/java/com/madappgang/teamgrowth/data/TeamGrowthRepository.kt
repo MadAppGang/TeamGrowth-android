@@ -18,9 +18,19 @@ import javax.inject.Inject
  */
 
 interface TeamGrowthRepository {
-    suspend fun getUserGoals(): Result<List<UserGoal>, ErrorResponse>
-    suspend fun getCurrentUser(): Result<User, ErrorResponse>
-    suspend fun updateProgress(progress: ProgressUpdate): Result<Progress, ErrorResponse>
+    suspend fun getUserGoals(
+        month: String,
+        year: String
+    ): Result<List<UserGoal>, ErrorResponse>
+
+    suspend fun getCurrentUser(
+        month: String,
+        year: String
+    ): Result<User, ErrorResponse>
+
+    suspend fun updateProgress(
+        progress: ProgressUpdate
+    ): Result<Progress, ErrorResponse>
 }
 
 class TeamGrowthRepositoryImpl @Inject constructor(
@@ -28,17 +38,23 @@ class TeamGrowthRepositoryImpl @Inject constructor(
     private val coroutineDispatcher: CoroutineDispatcher
 ) : TeamGrowthRepository {
 
-    override suspend fun getUserGoals(): Result<List<UserGoal>, ErrorResponse> =
+    override suspend fun getUserGoals(
+        month: String,
+        year: String
+    ): Result<List<UserGoal>, ErrorResponse> =
         withContext(coroutineDispatcher) {
             suspendApiCall {
-                teamGrowthService.getUserGoals()
+                teamGrowthService.getUserGoals(month, year)
             }
         }
 
-    override suspend fun getCurrentUser(): Result<User, ErrorResponse> =
+    override suspend fun getCurrentUser(
+        month: String,
+        year: String
+    ): Result<User, ErrorResponse> =
         withContext(coroutineDispatcher) {
             suspendApiCall {
-                teamGrowthService.getCurrentUser()
+                teamGrowthService.getCurrentUser(month, year)
             }
         }
 

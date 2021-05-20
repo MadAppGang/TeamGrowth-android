@@ -11,14 +11,20 @@ import retrofit2.http.*
 
 interface TeamGrowthService {
     @GET("/api/users/me/goals")
-    suspend fun getUserGoals(): List<UserGoal>
+    suspend fun getUserGoals(
+        @Query("month") month: String,
+        @Query("year") year: String
+    ): List<UserGoal>
 
     @GET("/api/users/me")
-    suspend fun getCurrentUser(): User
+    suspend fun getCurrentUser(
+        @Query("month") month: String,
+        @Query("year") year: String
+    ): User
 
     @PUT("/api/goals/{id}/progress")
     suspend fun updateGoal(
         @Body progress: ProgressUpdate,
         @Path("id") id: String = progress.goalId
-    ) : Progress
+    ): Progress
 }

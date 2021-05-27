@@ -10,17 +10,19 @@
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:padding="12dp"
         android:rotation="270"
-        app:progressCircleColor="?attr/colorPrimary"
-        app:circleProgressBlurStrokeWidth="4dp"
         app:backgroundCircleColor="?attr/colorOnSurface2"
         app:circleBackgroundStokeWidth="4dp"
+        app:circleProgressBlurStrokeWidth="4dp"
         app:circleProgressStrokeWidth="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:progressCircleColor="?attr/colorPrimary" />
 
     <TextView
         android:id="@+id/textViewCompleted"
@@ -43,13 +45,14 @@
     <TextView
         android:id="@+id/textViewProgress"
         style="?attr/widgetMaterialText1"
-        android:textAppearance="?attr/textAppearanceQuote"
+        android:textAppearance="?attr/textAppearanceTitle1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ellipsize="end"
         android:maxLines="1"
         android:gravity="center"
+        android:textSize="@dimen/size36"
         app:layout_constraintBottom_toTopOf="@+id/textViewAccordingToPlan"
         app:layout_constraintEnd_toEndOf="@+id/textViewCompleted"
         app:layout_constraintHorizontal_bias="0.5"
@@ -60,7 +63,7 @@
     <TextView
         android:id="@+id/textViewAccordingToPlan"
         style="?attr/widgetMaterialText3"
-        android:textAppearance="?attr/textAppearanceQuote"
+        android:textAppearance="?attr/textAppearanceCaption2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"

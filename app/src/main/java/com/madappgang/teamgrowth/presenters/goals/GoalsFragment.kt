@@ -1,10 +1,7 @@
 package com.madappgang.teamgrowth.presenters.goals
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
@@ -23,7 +20,6 @@ import com.madappgang.identifolibui.login.options.Style
 import com.madappgang.identifolibui.login.options.UseConditions
 import com.madappgang.teamgrowth.R
 import com.madappgang.teamgrowth.databinding.FragmentGoalsBinding
-import com.madappgang.teamgrowth.domain.Progress
 import com.madappgang.teamgrowth.domain.User
 import com.madappgang.teamgrowth.domain.UserGoal
 import com.madappgang.teamgrowth.utils.extensions.addSystemBottomPadding
@@ -152,8 +148,8 @@ class GoalsFragment : Fragment(R.layout.fragment_goals) {
         )
 
         val userConditions = UseConditions(
-            userAgreement = "https://userAgreement.com/",
-            privacyPolicy = "https://privacyPolicy.com/"
+            userAgreement = "https://madappgang.com/",
+            privacyPolicy = "https://madappgang.com/"
         )
 
         val providers = listOf(LoginProviders.EMAIL, LoginProviders.PHONE)

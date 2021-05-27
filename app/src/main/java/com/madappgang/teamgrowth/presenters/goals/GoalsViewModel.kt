@@ -1,5 +1,6 @@
 package com.madappgang.teamgrowth.presenters.goals
 
+import android.text.format.DateFormat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.madappgang.IdentifoAuthentication
@@ -11,6 +12,11 @@ import com.madappgang.teamgrowth.data.TeamGrowthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import java.text.DateFormatSymbols
+import java.text.SimpleDateFormat
+import java.time.Month
+import java.time.format.TextStyle
+import java.util.*
 import javax.inject.Inject
 
 
@@ -30,11 +36,22 @@ class GoalsViewModel @Inject constructor(
     private val _logOut = MutableSharedFlow<Boolean>()
     val logOut : SharedFlow<Boolean> = _logOut.asSharedFlow()
 
-    fun loadCurrentProgressAndGoals() {
+    init {
         _goalsViewStates.value = GoalsViewStates.Loading
+        loadCurrentProgressAndGoals()
+    }
+
+    fun loadCurrentProgressAndGoals() {
         viewModelScope.launch {
-            val resultCurrentUser = teamGrowthRepository.getCurrentUser()
-            val resultUserGoals = teamGrowthRepository.getUserGoals()
+
+            // TODO: Implement the ability to choose month/year
+            val date = Date()
+            val locale = Locale.US
+            val month = SimpleDateFormat("MMMM", locale).format(date)
+            val year = SimpleDateFormat("yyyy", locale).format(date)
+
+            val resultCurrentUser = teamGrowthRepository.getCurrentUser(month, year)
+            val resultUserGoals = teamGrowthRepository.getUserGoals(month, year)
 
             if (resultCurrentUser.isSuccessful() and resultUserGoals.isSuccessful()) {
                 val currentUser = (resultCurrentUser as Result.Success).value

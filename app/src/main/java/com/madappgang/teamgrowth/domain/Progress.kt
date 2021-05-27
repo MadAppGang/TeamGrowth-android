@@ -20,6 +20,9 @@ data class Progress(
     @SerialName("active") val active: Boolean,
     @SerialName("value") val value: Int,
     @SerialName("weeklyValue") val weeklyValue: Int,
+    @SerialName("deleted") val deleted : Boolean,
+    @SerialName("month") val month: String,
+    @SerialName("year") val year: Int,
     @SerialName("createdAt") val createdAt: String,
     @SerialName("updatedAt") val updatedAt: String
 ) : Parcelable

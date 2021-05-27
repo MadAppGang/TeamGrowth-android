@@ -8,7 +8,7 @@
     <TextView
         android:id="@+id/textViewOpsSomeThingWentWrong"
         style="@style/Widget.TeamGrowth.Text1"
-        android:textAppearance="?attr/textAppearanceTitle3"
+        android:textAppearance="?attr/textAppearanceTitle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"

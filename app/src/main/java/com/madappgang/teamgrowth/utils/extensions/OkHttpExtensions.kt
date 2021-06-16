@@ -14,10 +14,11 @@ import retrofit2.Retrofit
 
 inline fun <reified T> OkHttpClient.createRetrofitInstance(url: String): T {
     val contentType = "application/json".toMediaType()
+    val jsonConverterFactory = Json { ignoreUnknownKeys = true }.asConverterFactory(contentType)
     return Retrofit.Builder()
         .baseUrl(url)
         .client(this)
-        .addConverterFactory(Json.asConverterFactory(contentType))
+        .addConverterFactory(jsonConverterFactory)
         .build()
         .create(T::class.java)
 }

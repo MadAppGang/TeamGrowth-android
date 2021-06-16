@@ -46,7 +46,7 @@ class GoalViewHolder(
 
             constraintRootGoalCard.setOnClickListener { baseClickListener.clickListener(userGoal) }
             textVieCategory.text = String.format(context.getString(R.string.category), goal.category)
-            textViewGoalText.text = goal.description
+            textViewGoalText.text = goal.title
 
             val showLink = goal.link.isNotBlank()
             imageViewLink.isVisible = showLink

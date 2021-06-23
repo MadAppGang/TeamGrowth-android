@@ -27,6 +27,9 @@ import com.madappgang.teamgrowth.utils.extensions.addSystemTopPadding
 import com.madappgang.teamgrowth.utils.extensions.animateTo
 import com.madappgang.teamgrowth.utils.extensions.safeNavigate
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.DateFormatSymbols
+import java.time.Year
+import java.util.*
 import kotlin.math.roundToInt
 
 
@@ -51,6 +54,9 @@ class GoalsFragment : Fragment(R.layout.fragment_goals) {
         safeNavigate(action)
     }
 
+    private val months: Array<String> by lazy { DateFormatSymbols.getInstance(Locale.ENGLISH).months }
+    private val calendar by lazy { Calendar.getInstance(TimeZone.getDefault()) }
+
     private val adapter = GoalsAdapter(clickBlock)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -60,10 +66,35 @@ class GoalsFragment : Fragment(R.layout.fragment_goals) {
 
         goalsViewBinding.recycleViewGoals.adapter = adapter
 
-        goalsViewModel.loadCurrentProgressAndGoals()
+        var currentYear = calendar.get(Calendar.YEAR)
+        var currentMonth = calendar.get(Calendar.MONTH)
+
+        setCurrentDate(months[currentMonth], currentYear)
+
+        goalsViewModel.loadCurrentProgressAndGoals(months[currentMonth], currentYear.toString())
+        goalsViewBinding.includeMonthSelector.imageButtonPreviousMonth.setOnClickListener {
+            calendar.add(Calendar.MONTH, -1)
+            currentYear = calendar.get(Calendar.YEAR)
+            currentMonth = calendar.get(Calendar.MONTH)
+            setCurrentDate(months[currentMonth], currentYear)
+            goalsViewModel.loadCurrentProgressAndGoals(months[currentMonth], currentYear.toString())
+        }
+
+        goalsViewBinding.includeMonthSelector.imageButtonNextMonth.setOnClickListener {
+            calendar.add(Calendar.MONTH, 1)
+            currentYear = calendar.get(Calendar.YEAR)
+            currentMonth = calendar.get(Calendar.MONTH)
+            setCurrentDate(months[currentMonth], currentYear)
+            goalsViewModel.loadCurrentProgressAndGoals(months[currentMonth], currentYear.toString())
+        }
+
+
         goalsViewModel.goalsViewStates.asLiveData().observe(viewLifecycleOwner) { viewState ->
             when (viewState) {
-                is GoalsViewStates.DataFetchedSuccessfully -> showGoals(viewState.user, viewState.goals)
+                is GoalsViewStates.DataFetchedSuccessfully -> showGoals(
+                    viewState.user,
+                    viewState.goals
+                )
                 GoalsViewStates.Loading -> showLoading()
                 GoalsViewStates.Error -> showError()
             }
@@ -87,12 +118,17 @@ class GoalsFragment : Fragment(R.layout.fragment_goals) {
         }
 
         goalsViewBinding.includeErrorLabel.buttonTryAgain.setOnClickListener {
-            goalsViewModel.loadCurrentProgressAndGoals()
+            goalsViewModel.loadCurrentProgressAndGoals(months[currentMonth], currentYear.toString())
         }
 
         setFragmentResultListener(PROGRESS_REQUEST_KEY) { requestKey, bundle ->
-            goalsViewModel.loadCurrentProgressAndGoals()
+            goalsViewModel.loadCurrentProgressAndGoals(months[currentMonth], currentYear.toString())
         }
+    }
+
+    private fun setCurrentDate(month: String, year: Int) {
+        val dateString = String.format(getString(R.string.datePlaceHolder), month, year)
+        goalsViewBinding.includeMonthSelector.textViewMonthYear.text = dateString
     }
 
     override fun onStart() {

@@ -38,17 +38,10 @@ class GoalsViewModel @Inject constructor(
 
     init {
         _goalsViewStates.value = GoalsViewStates.Loading
-        loadCurrentProgressAndGoals()
     }
 
-    fun loadCurrentProgressAndGoals() {
+    fun loadCurrentProgressAndGoals(month : String, year : String) {
         viewModelScope.launch {
-
-            // TODO: Implement the ability to choose month/year
-            val date = Date()
-            val locale = Locale.US
-            val month = SimpleDateFormat("MMMM", locale).format(date)
-            val year = SimpleDateFormat("yyyy", locale).format(date)
 
             val resultCurrentUser = teamGrowthRepository.getCurrentUser(month, year)
             val resultUserGoals = teamGrowthRepository.getUserGoals(month, year)
